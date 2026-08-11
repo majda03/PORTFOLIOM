@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 64 64"
+  role="img"
+  aria-labelledby="favicon-title"
+>
+  <title id="favicon-title">MK — Majda Kapetanović</title>
+  <rect width="64" height="64" rx="14" fill="#050505"/>
+  <path
+    d="M10 45V19L19 32L28 19V45"
+    fill="none"
+    stroke="#f8f5ef"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M35 19V45M35 32L50 19M35 32L51 45"
+    fill="none"
+    stroke="#cda9b7"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
