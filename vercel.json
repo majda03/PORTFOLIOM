@@ -2,6 +2,17 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "portfolio-majdakapetanovic.vercel.app"
+        }
+      ],
+      "destination": "https://majdakapetanovic.com/$1",
+      "permanent": true
+    },
+    {
       "source": "/PROBNI",
       "destination": "/",
       "permanent": true
