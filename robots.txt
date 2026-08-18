@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-majdakapetanovic.vercel.app/sitemap.xml
+Sitemap: https://majdakapetanovic.com/sitemap.xml
