@@ -5,6 +5,7 @@ on:
       - portfolio-v3/signature-polish
       - portfolio-v4/clarity-and-motion
       - portfolio-v4/signature-refinement
+      - portfolio-v4/desktop-balance-about
     paths:
       - index.html
       - all-work.html
