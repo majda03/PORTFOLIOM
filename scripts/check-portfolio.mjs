@@ -49,7 +49,7 @@ try{
   await page.screenshot({path:"qa-screenshots/"+type+"-home.png",fullPage:true});
   console.log(type,JSON.stringify({...results,errors}));
   if(results.cards!==3 || results.arrows<8 || results.grain || results.overflows || !results.portraitLoaded || !results.watchLoaded || errors.length)failed=true;
-  if(width<=700 && (Math.abs(results.picture.top-results.hero.top)>1 || results.picture.height<results.hero.height-2 || results.title.top>results.hero.bottom-120))failed=true;
+  if(width<=700 && (Math.abs(results.picture.top-results.hero.top)>1 || results.picture.height<220 || results.picture.height>340 || results.title.top<results.picture.bottom-12 || results.title.bottom>results.hero.bottom))failed=true;
   if(width===390){
     await page.locator(".v3-menu").click();
     if(await page.locator(".v3-nav.is-open").count()!==1)failed=true;
@@ -63,4 +63,4 @@ try{
   await context.close();
  }
 }finally{await browser.close();server.close()}
-if(failed)process.exitCode=1;else console.log("PASS: three curated projects, nine archived, authentic watch, mobile integration, SVG arrows and no overflow");
+if(failed)process.exitCode=1;else console.log("PASS: clear v4 headline, mobile portrait framing, three featured projects, nine archived, authentic watch, SVG arrows and no overflow");
