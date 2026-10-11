@@ -1293,3 +1293,53 @@ body{background:#080a0c;color:var(--ivory)}
 .v4-about__reasons strong{font-size:17px}
 .v4-about__reasons p{font-size:11px;line-height:1.55;max-width:none}
 }
+
+/* FINAL MASTER: portrait as a deliberate editorial object, not half a viewport. */
+@media(min-width:981px){
+  .v4-hero{
+    grid-template-columns:minmax(0,1fr) minmax(310px,.38fr);
+    min-height:min(740px,calc(100svh - 82px));
+    align-items:center;
+    column-gap:clamp(24px,3.8vw,70px);
+  }
+  .v4-hero__content{
+    padding-top:clamp(62px,6vw,94px);
+    padding-bottom:clamp(62px,6vw,94px);
+    padding-right:0;
+  }
+  .v4-hero__portrait{
+    width:100%;
+    height:clamp(475px,70vh,690px);
+    align-self:center;
+    border:1px solid rgba(221,232,234,.14);
+    margin-right:var(--page);
+  }
+  .v4-hero__portrait img{object-position:center 22%}
+  .v4-hero__portrait figcaption{left:18px;right:18px;bottom:16px}
+  .v4-hero h1{max-width:850px;font-size:clamp(56px,5.15vw,90px)}
+  .v4-hero__intro{max-width:540px}
+}
+@media(min-width:981px) and (max-width:1240px){
+  .v4-hero{grid-template-columns:minmax(0,1fr) minmax(290px,.43fr);column-gap:25px}
+  .v4-hero h1{font-size:clamp(48px,4.8vw,63px)}
+  .v4-hero__portrait{height:clamp(460px,65vh,610px)}
+}
+@media(min-width:701px) and (max-width:980px){
+  .v4-hero{grid-template-columns:minmax(0,1fr) minmax(245px,.65fr)}
+  .v4-hero__portrait{min-height:510px}
+}
+/* Premium motion: deliberate affordances, no scroll hijack. */
+@media(prefers-reduced-motion:no-preference){
+ .v4-hero__portrait{transition:border-color .55s ease,box-shadow .6s ease}
+ .v4-hero__portrait:hover{border-color:rgba(225,238,241,.36);box-shadow:0 17px 65px rgba(0,0,0,.19)}
+ .v4-hero__portrait img{transition:filter .65s ease,transform .9s var(--ease)}
+ .v4-hero__portrait:hover img{filter:grayscale(100%) contrast(1.10) brightness(1);transform:scale(1.035)}
+ .v3-project__visual{transition:filter .4s ease}
+ .v3-project__visual:hover{filter:brightness(1.045)}
+ .v4-about__reasons>div{transition:transform .45s var(--ease)}
+ .v4-about__reasons>div:hover{transform:translateY(-3px)}
+}
+@media(prefers-reduced-motion:reduce){
+ .v4-hero__portrait img,.v4-hero__portrait,.v4-about__reasons>div{transition:none!important;animation:none!important}
+}
+/* Continue to treat devices as first-class: no mobile hero change. */
