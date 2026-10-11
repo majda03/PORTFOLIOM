@@ -4,6 +4,7 @@ on:
     branches:
       - portfolio-v3/signature-polish
       - portfolio-v4/clarity-and-motion
+      - portfolio-v4/signature-refinement
     paths:
       - index.html
       - all-work.html
@@ -11,6 +12,7 @@ on:
       - portfolio-v4.css
       - portfolio-v3.js
       - images/aurelis-watch.webp
+      - images/royal-aurum.webp
       - scripts/check-portfolio.mjs
       - .github/workflows/portfolio-visual-qa.yml
 permissions:
