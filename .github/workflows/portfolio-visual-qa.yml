@@ -9,6 +9,7 @@ on:
       - portfolio-v4/launch-candidate
       - portfolio-v4/about-value-proposition
       - portfolio-v4/final-master-polish
+      - portfolio-v4/final-alignment-rights
     paths:
       - index.html
       - all-work.html
