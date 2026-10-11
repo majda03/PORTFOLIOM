@@ -10,6 +10,7 @@ on:
       - portfolio-v4/about-value-proposition
       - portfolio-v4/final-master-polish
       - portfolio-v4/final-alignment-rights
+      - portfolio-v4/mobile-portrait-headroom
     paths:
       - index.html
       - all-work.html
