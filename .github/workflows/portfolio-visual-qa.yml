@@ -6,11 +6,17 @@ on:
       - portfolio-v4/clarity-and-motion
       - portfolio-v4/signature-refinement
       - portfolio-v4/desktop-balance-about
+      - portfolio-v4/launch-candidate
     paths:
       - index.html
       - all-work.html
       - portfolio-v3.css
       - portfolio-v4.css
+      - portfolio.css
+      - case-study.css
+      - 'work/**'
+      - sitemap.xml
+      - vercel.json
       - portfolio-v3.js
       - images/aurelis-watch.webp
       - images/royal-aurum.webp
