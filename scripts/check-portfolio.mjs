@@ -83,6 +83,35 @@ try{
   }
   await context.close();
  }
+  // Launch-candidate contract: short homepage; working project studies;
+  // absolute canonical metadata, sitemap entries and accessible navigation.
+  const launchContext=await browser.newContext({viewport:{width:390,height:844},reducedMotion:"reduce"});
+  const launchPage=await launchContext.newPage();
+  const launchErrors=[];
+  launchPage.on("pageerror",e=>launchErrors.push(e.message));
+  const sm=await readFile(resolve(root,"sitemap.xml"),"utf8");
+  for(const slug of ["offing-line","aurelis","royal-cosmetics"]){
+    const path="/work/"+slug+".html";
+    if(!sm.includes("https://majdakapetanovic.com"+path))failed=true;
+    await launchPage.goto("http://127.0.0.1:"+port+path,{waitUntil:"load"});
+    const checks=await launchPage.evaluate(()=>({
+      title:document.title,
+      h1:document.querySelectorAll("h1").length,
+      canonical:document.querySelector('link[rel="canonical"]')?.href,
+      image:document.querySelector(".v4-case-image img")?.complete && document.querySelector(".v4-case-image img")?.naturalWidth>0,
+      copy:document.querySelectorAll(".v4-case-row").length,
+      overflow:document.documentElement.scrollWidth>window.innerWidth+1
+    }));
+    console.log("CASE_STUDY",slug,JSON.stringify(checks));
+    if(checks.h1!==1||!checks.canonical?.endsWith(path)||!checks.image||checks.copy!==3||checks.overflow)failed=true;
+  }
+  await launchPage.goto("http://127.0.0.1:"+port+"/",{waitUntil:"load"});
+  const studies=await launchPage.locator(".v3-feature-grid .v4-case-link").count();
+  const cssCount=await launchPage.locator('link[rel="stylesheet"][href*="portfolio"]').count();
+  const fontUrl=await launchPage.locator('link[href*="fonts.googleapis.com/css2"]').getAttribute("href");
+  console.log("LAUNCH_CHECK",JSON.stringify({studies,cssCount,fontUrl,errors:launchErrors}));
+  if(studies!==3||cssCount!==1||fontUrl.includes("Italianno")||launchErrors.length)failed=true;
+  await launchContext.close();
   // Real motion opt-in: the projects must reveal during ordinary scrolling,
   // without locking or replacing native scroll.
   const motionContext=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,reducedMotion:"no-preference"});
