@@ -46,6 +46,16 @@ try{
     watchLoaded:document.querySelector(".v3-project__watch-image").complete&&document.querySelector(".v3-project__watch-image").naturalWidth>0
    };
   });
+  if (type === "iphone") {
+    const debug = await page.evaluate(() => {
+      const classes=[".v4-hero",".v4-hero__portrait",".v4-hero__portrait picture",".v4-hero__portrait img",".v4-hero__content"];
+      return classes.map(k=>{
+        const el=document.querySelector(k), cs=getComputedStyle(el), r=el.getBoundingClientRect();
+        return {k,display:cs.display,position:cs.position,opacity:cs.opacity,visibility:cs.visibility,zIndex:cs.zIndex,background:cs.backgroundColor,animation:cs.animationName,box:[r.x,r.y,r.width,r.height],hit:document.elementFromPoint(200,180)?.className};
+      });
+    });
+    console.log("DEBUG_V4", JSON.stringify(debug));
+  }
   await page.screenshot({path:"qa-screenshots/"+type+"-home.png",fullPage:true});
   if (type === "iphone" || type === "desktop") {
     const preview = await page.screenshot({type:"jpeg",quality:46,fullPage:false});
