@@ -224,3 +224,270 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(prefers-reduced-motion:reduce){
   .js .v3-project .v3-project__visual{clip-path:none!important;transition:none!important}
 }
+
+
+/* -------------------------------------------------------------------------
+   SIGNATURE POLISH / compositional revision 2026
+   One clear first impression, no scroll theatre. The portrait and message
+   become one editorial composition on mobile instead of two disconnected pages.
+   ------------------------------------------------------------------------- */
+.v3-arrow {
+  display:inline-block;
+  flex:none;
+  width:18px;
+  height:18px;
+  vertical-align:middle;
+  stroke:currentColor;
+}
+.v3-project__explore .v3-arrow,
+.v3-footer .v3-arrow,
+.v3-nav__contact .v3-arrow {width:14px;height:14px}
+.v3-project__meta>a .v3-arrow {width:22px;height:22px}
+.v3-all-work-link>.v3-arrow {width:25px;height:25px;margin-left:10px;transition:transform .24s var(--ease)}
+.v3-all-work-link:hover>.v3-arrow{transform:translate(4px,-4px)}
+.v3-hero__actions .v3-arrow {width:18px;height:18px}
+.v3-hero__portrait {isolation:isolate}
+.v3-hero__portrait img {object-position:center 20%;filter:grayscale(100%) contrast(1.06) brightness(.91)}
+.v3-hero__portrait::after {
+  background:linear-gradient(180deg,rgba(6,5,6,.02) 2%,transparent 45%,rgba(8,7,8,.61) 100%);
+}
+.v3-hero__content {position:relative}
+.v3-hero__intro {text-wrap:pretty}
+.v3-hero h1 {text-wrap:balance}
+.v3-hero__eyebrow {color:#ccabb4}
+.v3-hero__actions .v3-button {letter-spacing:.01em}
+.v3-hero__index {bottom:30px}
+.v3-hero__portrait figcaption {font-size:9px}
+.v3-project__visual {background-color:#0c0c0c}
+.v3-project__watch-image {
+  position:absolute;
+  z-index:1;
+  width:100%;
+  height:100%;
+  inset:0;
+  display:block;
+  object-fit:contain;
+  object-position:center 40%;
+  opacity:0;
+  transform:scale(.94) translateY(-5%);
+  filter:contrast(1.07) saturate(.93);
+  mix-blend-mode:normal;
+  -webkit-mask-image:radial-gradient(ellipse 60% 63% at 50% 46%,black 54%,transparent 100%);
+  mask-image:radial-gradient(ellipse 60% 63% at 50% 46%,black 54%,transparent 100%);
+  transition:opacity .6s ease, transform 1s var(--ease);
+}
+.v3-project__visual.has-watch-image .v3-project__watch-image {
+  opacity:1;
+  transform:scale(1) translateY(-5%);
+}
+.v3-project__visual.has-watch-image .v3-project__aurelis-art>span{display:none}
+.v3-project__visual.has-watch-image .v3-project__aurelis-art{
+  justify-content:flex-end;
+  padding-bottom:clamp(36px,4.4vw,64px);
+  background:linear-gradient(0deg,rgba(2,13,9,.72),transparent 46%);
+}
+.v3-project__visual.has-watch-image .v3-project__aurelis-art strong{
+  font-size:clamp(38px,4vw,60px);
+  letter-spacing:.13em;
+  text-shadow:0 2px 18px rgba(0,0,0,.55);
+}
+.v3-project__visual.has-watch-image .v3-project__aurelis-art small{
+  font-size:8px;
+  margin-top:7px;
+}
+.v3-project__visual:hover .v3-project__watch-image {
+  transform:scale(1.045) translateY(-5%);
+}
+.v3-project__meta {padding-top:20px}
+.v3-project__meta p {text-wrap:pretty}
+.v3-work .v3-section-heading {margin-bottom:clamp(32px,4vw,56px)}
+.v3-approach__intro h2 {text-wrap:balance}
+.v3-approach__columns>div {transition:border-color .25s ease}
+.v3-approach__columns>div:hover {border-bottom-color:rgba(241,235,226,.37)}
+.v3-form__end button:disabled {opacity:.65;cursor:wait}
+/* Animate the image reveal once; user scroll remains completely native. */
+@media (prefers-reduced-motion:no-preference) {
+ .js .v3-project .v3-project__visual {
+   clip-path:inset(0 0 9% 0);
+   transform:translateY(12px);
+   transition:clip-path .9s var(--ease),transform .9s var(--ease),background .3s;
+ }
+ .js .v3-project.is-visible .v3-project__visual {
+   clip-path:inset(0);
+   transform:translateY(0);
+ }
+ .js .v3-project .v3-project__meta {
+   opacity:.3;
+   transform:translateY(11px);
+   transition:opacity .75s var(--ease) .13s,transform .75s var(--ease) .13s;
+ }
+ .js .v3-project.is-visible .v3-project__meta {opacity:1;transform:none}
+}
+/* Wider viewports: keep title/photo in one visual field instead of two boxes. */
+@media (min-width: 981px) {
+ .v3-hero {min-height:min(820px,calc(100svh - 82px));grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}
+ .v3-hero__content {padding-right:0;z-index:3}
+ .v3-hero h1 {font-size:clamp(74px,7vw,135px);max-width:1100px;z-index:2}
+ .v3-hero h1 em {white-space:nowrap}
+ .v3-hero__intro {max-width:470px}
+ .v3-hero__portrait {border-left:0}
+ .v3-hero__portrait::before {
+   content:"";
+   position:absolute;inset:0;z-index:1;
+   pointer-events:none;
+   background:linear-gradient(90deg,#080808 0%,rgba(8,8,8,.68) 9%,transparent 37%);
+ }
+ .v3-hero__portrait figcaption {z-index:2}
+}
+/* Mobile: single art-directed hero stage. Face appears ABOVE the title,
+   title sits across the soft photo-to-black transition, CTAs are visible
+   without requiring a separate screen of scrolling. */
+@media (max-width: 700px) {
+ .v3-hero {
+   position:relative;
+   display:block;
+   height:clamp(675px,calc(100svh - 66px),820px);
+   min-height:675px;
+   isolation:isolate;
+   background:#080808;
+ }
+ .v3-hero::before{display:none}
+ .v3-hero__portrait {
+   position:absolute;
+   z-index:0;
+   inset:0;
+   width:100%;
+   height:100%;
+   min-height:0;
+   overflow:hidden;
+   border:0;
+   animation:v3-photo .9s var(--ease) both;
+   background:#0d0b0c;
+ }
+ .v3-hero__portrait picture{height:100%}
+ .v3-hero__portrait img {
+   width:100%;height:100%;object-fit:cover;
+   object-position:center 17%;
+   filter:grayscale(100%) contrast(1.08) brightness(.88);
+ }
+ .v3-hero__portrait::after {
+   content:"";
+   position:absolute;inset:0;z-index:1;
+   background:
+      linear-gradient(180deg,rgba(6,6,6,.14) 0%,rgba(6,6,6,.07) 17%,rgba(6,6,6,.33) 34%,rgba(8,8,8,.85) 49%,#080808 61%,#080808 100%),
+      linear-gradient(90deg,rgba(8,8,8,.16),transparent 40%,rgba(8,8,8,.06));
+ }
+ .v3-hero__portrait figcaption {
+   top:21px;left:var(--page);right:var(--page);bottom:auto;
+   z-index:2;
+   letter-spacing:.13em;font-size:8px;
+   text-shadow:0 1px 12px rgba(0,0,0,.8);
+ }
+ .v3-hero__content {
+   position:absolute;inset:0;
+   z-index:3;
+   display:flex;flex-direction:column;
+   justify-content:flex-end;
+   align-items:flex-start;
+   padding:0 var(--page) clamp(30px,5svh,54px);
+   min-width:0;
+   animation:v3-intro .85s var(--ease) .1s both;
+ }
+ .v3-hero__eyebrow {
+   font-size:9px;
+   letter-spacing:.19em;
+   margin:0 0 17px;
+   color:#ead6d8;
+ }
+ .v3-hero h1 {
+   font-size:clamp(50px,12vw,73px);
+   line-height:1.02;
+   letter-spacing:-.052em;
+   width:100%;
+   max-width:580px;
+ }
+ .v3-hero h1 em {
+   display:block;
+   color:#e0b8c5;
+   white-space:normal;
+   max-width:9ch;
+ }
+ .v3-hero__intro {
+   margin:19px 0 20px;
+   font-size:12px;
+   line-height:1.75;
+   color:#ded3d1;
+   max-width:42ch;
+ }
+ .v3-hero__actions {
+   width:100%;
+   display:flex;
+   flex-direction:row;
+   flex-wrap:wrap;
+   align-items:center;
+   gap:12px 21px;
+   margin:0;
+ }
+ .v3-hero__actions .v3-button {
+   min-width:0;
+   display:inline-flex;
+   gap:25px;
+   font-size:11px;
+   padding:15px 17px;
+ }
+ .v3-hero__actions .v3-text-link {
+   font-size:11px;
+   padding:11px 0;
+   gap:9px;
+   border-bottom-color:rgba(239,229,227,.58);
+ }
+ .v3-hero__index{display:none}
+ .v3-work {padding-top:60px;padding-bottom:65px}
+ .v3-work .v3-section-heading{gap:14px;margin-bottom:28px}
+ .v3-section-heading h2 {font-size:clamp(55px,11vw,75px);line-height:1.05}
+ .v3-section-heading>p {font-size:12px;line-height:1.72}
+ .v3-project__visual, .v3-archive .v3-project__visual {
+   height:clamp(244px,67vw,410px);
+ }
+ .v3-project__meta {padding-top:17px}
+ .v3-project__meta h3 {font-size:clamp(33px,8vw,40px)}
+ .v3-project__meta p {font-size:12px;line-height:1.65}
+ .v3-feature-grid {gap:32px}
+ .v3-all-work-link{margin-top:37px;padding-top:17px;font-size:clamp(28px,8vw,37px)}
+ .v3-approach {padding:57px var(--page) 59px;gap:22px}
+ .v3-approach__intro h2 {
+   font-size:clamp(44px,9.1vw,62px);
+   line-height:1.08;
+   margin:18px 0 0;
+   letter-spacing:-.035em;
+ }
+ .v3-approach__columns>div {padding:12px 0 16px;gap:7px 12px}
+ .v3-approach__columns span {font-size:9px;padding-top:5px}
+ .v3-approach__columns h3 {font-size:clamp(24px,6.1vw,31px)}
+ .v3-approach__columns p {font-size:12px;line-height:1.7}
+ .v3-approach__bio {margin:0;padding-top:20px;font-size:13px;line-height:1.7}
+ .v3-contact {padding:68px var(--page)}
+ .v3-contact__copy h2 {font-size:clamp(50px,10.5vw,78px)}
+ .v3-project__visual.has-watch-image .v3-project__aurelis-art{
+   padding-bottom:28px;
+ }
+ .v3-project__visual.has-watch-image .v3-project__aurelis-art strong {font-size:42px}
+ .v3-project__watch-image {
+   object-position:center 40%;
+   -webkit-mask-image:linear-gradient(180deg,transparent 0%,black 16%,black 76%,transparent 99%);
+   mask-image:linear-gradient(180deg,transparent 0%,black 16%,black 76%,transparent 99%);
+ }
+}
+@media (max-width: 380px) {
+ .v3-hero {min-height:710px}
+ .v3-hero h1 {font-size:47px}
+ .v3-hero__intro {font-size:11.5px}
+ .v3-hero__actions{gap:12px}
+ .v3-hero__actions .v3-button {padding:14px 15px}
+ .v3-hero__actions .v3-text-link {font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){
+ .v3-hero__portrait,.v3-hero__content {animation:none!important}
+ .v3-project__visual,.v3-project__meta {clip-path:none!important;opacity:1!important;transform:none!important}
+ .v3-project__watch-image {transition:none!important}
+}
