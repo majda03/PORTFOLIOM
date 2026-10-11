@@ -99,6 +99,34 @@ try{
   }
   await context.close();
  }
+  // Art-direction acceptance: warm process/about + slate contact + paper form.
+  // Capture both on representative phone and desktop breakpoints and check
+  // live contrast/geometry, including functional inputs.
+  for(const [device,vw,vh] of [["phone",390,844],["desktop",1440,900]]){
+    const contrastContext=await browser.newContext({viewport:{width:vw,height:vh},reducedMotion:"reduce"});
+    const cp=await contrastContext.newPage();
+    await cp.goto("http://127.0.0.1:"+port+"/",{waitUntil:"load"});
+    const art=await cp.evaluate(()=>{
+      const color=selector=>getComputedStyle(document.querySelector(selector)).color;
+      const bg=selector=>getComputedStyle(document.querySelector(selector)).backgroundColor;
+      const rect=selector=>{const r=document.querySelector(selector).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};
+      const hex=val=>val.match(/\d+(?:\.\d+)?/g).slice(0,3).map(Number);
+      const lum=val=>hex(val).map(v=>v/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4)).reduce((a,v,i)=>a+v*[.2126,.7152,.0722][i],0);
+      const ratio=(a,b)=>{const x=lum(a),y=lum(b);return +((Math.max(x,y)+.05)/(Math.min(x,y)+.05)).toFixed(2)};
+      const main={processBg:bg(".v3-approach"),heading:color(".v3-approach__intro h2"),bio:color(".v4-about__story p"),formBg:bg(".v3-form"),formLabel:color(".v3-form label"),inputBg:bg(".v3-form input"),inputColor:color(".v3-form input"),contactGradient:getComputedStyle(document.querySelector(".v3-contact")).backgroundImage,contactHeading:color(".v3-contact__copy h2"),formAction:document.querySelector("#project-enquiry").action,overflow:document.documentElement.scrollWidth>innerWidth+1};
+      return {...main,ratios:{processHead:ratio(main.heading,main.processBg),processBio:ratio(main.bio,main.processBg),formLabel:ratio(main.formLabel,main.formBg),formInput:ratio(main.inputColor,main.inputBg)},processRect:rect(".v3-approach"),formRect:rect(".v3-form")};
+    });
+    console.log("COLOR_CONTRAST_"+device,JSON.stringify(art));
+    if(art.processBg!=="rgb(237, 234, 227)"||art.formBg!=="rgb(240, 237, 230)"||!art.contactGradient.includes("linear-gradient")||art.overflow||art.formAction!=="https://formspree.io/f/maqlanry"||Object.values(art.ratios).some(x=>x<4.5))failed=true;
+    for(const [what,id,offset] of [["process","approach",0],["about","about",-50],["contact","contact",0],["form","project-enquiry",-70]]){
+      await cp.evaluate(({id,offset})=>window.scrollTo({top:document.getElementById(id).getBoundingClientRect().top+window.scrollY+offset,behavior:"instant"}),{id,offset});
+      await cp.waitForTimeout(220);
+      const shot=await cp.screenshot({type:"jpeg",quality:55});
+      if(["process","about","contact","form"].includes(what)) console.log("ART_V5_"+device+"_"+what+"::"+shot.toString("base64"));
+      await cp.screenshot({path:"qa-screenshots/v5-"+device+"-"+what+".png"});
+    }
+    await contrastContext.close();
+  }
   // Launch-candidate contract: short homepage; working project studies;
   // absolute canonical metadata, sitemap entries and accessible navigation.
   const launchContext=await browser.newContext({viewport:{width:390,height:844},reducedMotion:"reduce"});
