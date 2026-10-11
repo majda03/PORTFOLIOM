@@ -7,6 +7,7 @@ on:
       - portfolio-v4/signature-refinement
       - portfolio-v4/desktop-balance-about
       - portfolio-v4/launch-candidate
+      - portfolio-v4/about-value-proposition
     paths:
       - index.html
       - all-work.html
