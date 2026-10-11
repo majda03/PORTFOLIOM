@@ -1373,3 +1373,10 @@ body{background:#080a0c;color:var(--ivory)}
     left:clamp(-26px,-1.5vw,-18px);
   }
 }
+
+/* Owner-approved final mobile correction: reveal the entire top of the portrait.
+   Only alter vertical image framing on phone-sized viewports.
+   Hero height, image size, typography, overlays, desktop framing and content stay unchanged. */
+@media (max-width:700px) {
+  .v4-hero__portrait img { object-position:56% 0%; }
+}
