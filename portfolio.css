@@ -1413,3 +1413,86 @@ body{background:#080a0c;color:var(--ivory)}
 @media (min-width:1280px) and (min-height:740px) and (max-height:799px) {
   .v4-hero__content { top:-40px; }
 }
+
+
+/* V5 COLOR ART DIRECTION — ONE EDITORIAL LIGHT INTERLUDE.
+   Selected Work/Hero/Footer and all project cards remain exactly as approved.
+   Porcelain How I Work + warmer mineral-slate Contact + paper enquiry card.
+   No filters, decorative gradients or scroll interference in the process area. */
+.v3-approach {
+  background:#edeae3;
+  color:#263137;
+  border-top:1px solid #d0ccc4;
+}
+.v3-approach .v3-overline,
+.v3-approach__columns span,
+.v4-about__byline,
+.v4-about__reasons span,
+.v4-toolkit .v3-overline {color:#5b676a;}
+.v3-approach__intro h2,
+.v4-about__identity h3 {color:#1d292e;}
+.v3-approach__intro h2 em {color:#5d6b70;}
+.v3-approach__columns h3,
+.v4-about__reasons strong {color:#1e2c32;}
+.v3-approach__columns p,
+.v4-about__story p,
+.v4-about__story p:first-child,
+.v4-about__reasons p,
+.v4-toolkit p {color:#506068;}
+.v4-about__story p:first-child {color:#26343a;}
+.v4-about__story em {color:#213139;}
+.v4-toolkit p span {color:#69777a;}
+.v3-approach__columns>div,
+.v3-approach__columns>div:first-child,
+.v4-about,
+.v4-about__reasons,
+.v4-about__reasons>div,
+.v4-toolkit {border-color:#c8c7c0;}
+.v3-approach .v3-approach__columns>div:hover {border-color:#79888a;}
+.v4-process-step::after {
+  background:linear-gradient(90deg,#35454c,#96a5a5 75%,transparent);
+}
+@media (prefers-reduced-motion:no-preference) {
+  .v4-about__reasons>div:hover {transform:translateY(-2px);}
+}
+/* Dark enough to retain the brand; light enough to separate it from black
+   project galleries. The limestone panel makes the real form the hero. */
+.v3-contact {
+  background:linear-gradient(120deg,#263237 0%,#303d41 100%);
+  color:#f5f2ec;
+  border-top:1px solid #bcc4c2;
+}
+.v3-contact .v3-overline {color:#c0d0d1;}
+.v3-contact__copy h2 {color:#f7f6f1;}
+.v3-contact__copy h2 em {color:#cdd8d9;}
+.v3-contact__copy p {color:#d9e2e1;}
+.v3-email {color:#f5f2ed;border-color:#cdd5d4;}
+.v3-email:hover,.v3-email:focus-visible {color:#fff;border-color:#fff;}
+.v3-form {
+  background:#f0ede6;
+  border:1px solid #e0ded5;
+  box-shadow:0 18px 55px rgba(8,16,20,.15);
+}
+.v3-form>.v3-overline {color:#53666d;}
+.v3-form label {color:#2b383e;}
+.v3-form input,.v3-form select,.v3-form textarea {
+  background:#fcfaf6;
+  color:#202c31;
+  border-color:#b9bfbc;
+}
+.v3-form input::placeholder,.v3-form textarea::placeholder {color:#647276;}
+.v3-form select option {background:#fcfaf6;color:#202c31;}
+.v3-form input:focus,.v3-form select:focus,.v3-form textarea:focus {
+  border-color:#283f48;
+  outline:2px solid rgba(54,78,84,.23);
+  outline-offset:1px;
+}
+.v3-form__end span {color:#5c6b6e;}
+.v3-form__end button {background:#23343b;color:#f9f8f3;}
+.v3-form__end button:hover,.v3-form__end button:focus-visible {background:#415962;color:#fff;}
+.v3-form__status {color:#24383e;}
+@media (max-width:700px) {
+  .v3-approach {border-top-color:#d0ccc4;}
+  .v4-about__reasons>div {border-color:#c8c7c0;}
+  .v3-form {box-shadow:0 12px 35px rgba(8,16,20,.12);}
+}
