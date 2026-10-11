@@ -28,7 +28,7 @@ const browser=await chromium.launch({headless:true});
 await mkdir("qa-screenshots",{recursive:true});
 let failed=false;
 try{
- for(const [type,width,height] of [["iphone",390,844],["narrow",320,700],["desktop",1440,900]]){
+ for(const [type,width,height] of [["iphone",390,844],["narrow",320,700],["compact",390,690],["laptop",1366,768],["desktop",1440,900],["wide",1600,900]]){
   const context=await browser.newContext({viewport:{width,height},deviceScaleFactor:1,reducedMotion:"reduce"});
   const page=await context.newPage();
   const errors=[];
@@ -70,6 +70,14 @@ try{
     console.log("DESKTOP_FINAL_ALIGNMENT",JSON.stringify(align));
     if(align.aboutText.left<=align.aboutTitle.right+25||Math.abs(align.aboutText.left-align.toolkitText.left)>2||!align.rights||align.portrait.right>align.viewport-22)failed=true;
   }
+  const heroAlignment=await page.evaluate(()=>{
+    const rect=selector=>{const el=document.querySelector(selector),r=el.getBoundingClientRect();return {top:Math.round(r.top),bottom:Math.round(r.bottom),left:Math.round(r.left),right:Math.round(r.right),height:Math.round(r.height)};};
+    return {cta:rect(".v4-hero__actions"),signature:rect(".v4-hero__signature"),eyebrow:rect(".v4-hero__eyebrow"),portrait:rect(".v4-hero__portrait"),hero:rect(".v4-hero"),signPosition:getComputedStyle(document.querySelector(".v4-hero__signature")).position};
+  });
+  console.log("HERO_ALIGN",type,JSON.stringify(heroAlignment));
+  if(width<=700 && (heroAlignment.signPosition!=="static" || heroAlignment.signature.top<heroAlignment.cta.bottom+10 || heroAlignment.signature.bottom>heroAlignment.hero.bottom-10))failed=true;
+  if(width>=1280 && height>=800 && Math.abs(heroAlignment.eyebrow.top-heroAlignment.portrait.top)>3)failed=true;
+  if(type==="laptop" && Math.abs(heroAlignment.eyebrow.top-heroAlignment.portrait.top)>3)failed=true;
   await page.screenshot({path:"qa-screenshots/"+type+"-home.png",fullPage:true});
   if (type === "iphone" || type === "desktop") {
     const preview = await page.screenshot({type:"jpeg",quality:46,fullPage:false});
