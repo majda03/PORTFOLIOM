@@ -609,3 +609,36 @@ body{background:#080a0c;color:var(--ivory)}
  .v4-toolkit .v3-overline{font-size:9px;}
  .v4-toolkit p{font-size:12px;line-height:1.8;}
 }
+
+/* FINAL BALANCE: slightly narrower desktop portrait, stronger space for the work. */
+@media (min-width:981px){
+  .v4-hero{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);}
+  .v4-hero__content{padding-right:clamp(16px,3.5vw,56px);}
+  .v4-hero__portrait img{object-position:51% 22%;}
+}
+/* A concise personal introduction instead of another long gallery or portrait. */
+.v4-about{
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);
+  gap:clamp(24px,5vw,96px);
+  padding:clamp(25px,3.8vw,51px) 0;
+  border-top:1px solid rgba(223,237,241,.17);
+  scroll-margin-top:90px;
+}
+.v4-about__identity h3{
+  margin:12px 0 18px;
+  color:#f0f4f3;
+  font:500 clamp(30px,3.3vw,54px)/1.12 var(--sans);
+  letter-spacing:-.054em;
+}
+.v4-about__byline{font:600 9px/1.6 var(--sans);letter-spacing:.12em;color:#89a0a9;}
+.v4-about__story{display:grid;gap:15px;align-content:center;max-width:670px}
+.v4-about__story p{margin:0;color:#c0cdd0;font:400 clamp(13px,1.1vw,16px)/1.8 var(--sans);text-wrap:pretty}
+.v4-about__story p:first-child{color:#ebf1f0}
+@media (max-width:700px){
+  .v4-about{grid-template-columns:1fr;gap:18px;padding:27px 0;}
+  .v4-about__identity h3{font-size:35px;margin:9px 0 8px;}
+  .v4-about__story{gap:12px}
+  .v4-about__story p{font-size:13px;line-height:1.73}
+}
