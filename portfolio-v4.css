@@ -583,3 +583,29 @@ body{background:#080a0c;color:var(--ivory)}
   color:#f7f3ec;
   text-shadow:0 2px 20px rgba(19,14,12,.22);
 }
+
+/* Skills stay visible to technical reviewers without becoming another screen. */
+.v4-toolkit{
+  grid-column:1/-1;
+  display:flex;
+  justify-content:space-between;
+  align-items:start;
+  gap:22px 35px;
+  border-top:1px solid rgba(223,237,241,.17);
+  padding-top:22px;
+}
+.v4-toolkit .v3-overline{color:#8da9b3;flex:0 0 auto;padding-top:5px}
+.v4-toolkit p{
+  margin:0;
+  color:#b9c8cc;
+  max-width:780px;
+  font:400 clamp(12px,1.12vw,15px)/1.85 var(--sans);
+  letter-spacing:.015em;
+  text-wrap:pretty;
+}
+.v4-toolkit p span{color:#758b94;padding:0 .16em}
+@media(max-width:700px){
+ .v4-toolkit{flex-direction:column;align-items:start;gap:6px;padding-top:18px;}
+ .v4-toolkit .v3-overline{font-size:9px;}
+ .v4-toolkit p{font-size:12px;line-height:1.8;}
+}
