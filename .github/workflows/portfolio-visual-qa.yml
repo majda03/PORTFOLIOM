@@ -1,0 +1,47 @@
+name: Portfolio Visual QA
+on:
+  push:
+    branches:
+      - portfolio-v3/signature-polish
+      - portfolio-v4/clarity-and-motion
+      - portfolio-v4/signature-refinement
+      - portfolio-v4/desktop-balance-about
+      - portfolio-v4/launch-candidate
+      - portfolio-v4/about-value-proposition
+      - portfolio-v4/final-master-polish
+      - portfolio-v4/final-alignment-rights
+      - portfolio-v4/mobile-portrait-headroom
+    paths:
+      - index.html
+      - all-work.html
+      - portfolio-v3.css
+      - portfolio-v4.css
+      - portfolio.css
+      - case-study.css
+      - 'work/**'
+      - sitemap.xml
+      - vercel.json
+      - portfolio-v3.js
+      - images/aurelis-watch.webp
+      - images/royal-aurum.webp
+      - scripts/check-portfolio.mjs
+      - .github/workflows/portfolio-visual-qa.yml
+permissions:
+  contents: read
+jobs:
+  visual-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/check-portfolio.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: portfolio-qa-screenshots
+          path: qa-screenshots/
