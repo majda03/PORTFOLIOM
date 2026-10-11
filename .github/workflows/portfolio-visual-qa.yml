@@ -8,6 +8,7 @@ on:
       - portfolio-v4/desktop-balance-about
       - portfolio-v4/launch-candidate
       - portfolio-v4/about-value-proposition
+      - portfolio-v4/final-master-polish
     paths:
       - index.html
       - all-work.html
