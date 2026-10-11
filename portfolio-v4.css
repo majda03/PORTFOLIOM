@@ -442,3 +442,16 @@ body{background:#080a0c;color:var(--ivory)}
  .js .v3-project .v3-project__visual{transform:none!important;clip-path:none!important;opacity:1!important}
  .js .v3-project .v3-project__meta{transform:none!important;opacity:1!important}
 }
+
+/* Archive should read as a curated product/development index, not a newspaper. */
+.v3-archive-hero h1{
+  font:600 clamp(58px,7.5vw,113px)/1.06 var(--sans);
+  letter-spacing:-.075em;
+  margin-top:25px;
+}
+.v3-archive-hero p{font-size:14px}
+.v3-archive__heading{letter-spacing:.12em}
+.v3-archive .v3-project__meta h3{font-size:clamp(28px,2.7vw,43px)}
+@media(max-width:700px){
+  .v3-archive-hero h1{font-size:clamp(56px,13vw,86px)}
+}
