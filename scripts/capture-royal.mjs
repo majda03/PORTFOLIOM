@@ -19,4 +19,16 @@ try {
   }
   await page.close();
  }
+
+ const detail=await browser.newPage({viewport:{width:1060,height:800},deviceScaleFactor:1,reducedMotion:"reduce"});
+ await detail.goto("https://final-royal-cosmetics-2.vercel.app/product/royal-aurum-24k-gold-cream",{waitUntil:"domcontentloaded",timeout:60000});
+ await detail.waitForTimeout(2100);
+ const detailShot=await detail.screenshot({type:"jpeg",quality:50});
+ console.log("ROYAL_DETAIL::"+detailShot.toString("base64"));
+ const meta=await detail.evaluate(()=>({
+   title:document.title,
+   images:[...document.images].slice(0,8).map(x=>({src:x.currentSrc,width:x.naturalWidth,alt:x.alt}))
+ }));
+ console.log("ROYAL_DETAIL_META",JSON.stringify(meta));
+ await detail.close();
 }finally{await browser.close()}
