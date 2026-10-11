@@ -77,6 +77,7 @@ try{
   console.log("HERO_ALIGN",type,JSON.stringify(heroAlignment));
   if(width<=700 && (heroAlignment.signPosition!=="static" || heroAlignment.signature.top<heroAlignment.cta.bottom+10 || heroAlignment.signature.bottom>heroAlignment.hero.bottom-10))failed=true;
   if(width>=1280 && height>=800 && Math.abs(heroAlignment.eyebrow.top-heroAlignment.portrait.top)>3)failed=true;
+  if(type==="laptop" && Math.abs(heroAlignment.eyebrow.top-heroAlignment.portrait.top)>3)failed=true;
   await page.screenshot({path:"qa-screenshots/"+type+"-home.png",fullPage:true});
   if (type === "iphone" || type === "desktop") {
     const preview = await page.screenshot({type:"jpeg",quality:46,fullPage:false});
