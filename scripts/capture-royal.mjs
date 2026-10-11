@@ -21,7 +21,7 @@ try {
  }
 
  const detail=await browser.newPage({viewport:{width:1060,height:800},deviceScaleFactor:1,reducedMotion:"reduce"});
- await detail.goto("https://final-royal-cosmetics-2.vercel.app/product/royal-aurum-24k-gold-cream",{waitUntil:"domcontentloaded",timeout:60000});
+ await detail.goto("https://final-royal-cosmetics-2.vercel.app/images/products/royal-aurum.webp",{waitUntil:"load",timeout:60000});
  await detail.waitForTimeout(2100);
  const detailShot=await detail.screenshot({type:"jpeg",quality:50});
  console.log("ROYAL_DETAIL::"+detailShot.toString("base64"));
