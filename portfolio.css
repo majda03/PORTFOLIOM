@@ -1260,3 +1260,9 @@ body{background:#080a0c;color:var(--ivory)}
   .v4-about__story{gap:12px}
   .v4-about__story p{font-size:13px;line-height:1.73}
 }
+
+/* Unobtrusive evidence link; preserve live-project links as primary. */
+.v4-case-link{display:inline-flex;width:max-content;gap:7px;margin-top:15px;color:#aabdc3;font:600 11px/1.5 var(--sans);text-decoration:none;border-bottom:1px solid rgba(184,207,214,.52);padding-bottom:5px;letter-spacing:.025em;transition:color .2s ease,border-color .2s ease}
+.v4-case-link:hover,.v4-case-link:focus-visible{color:#fff;border-color:#fff}
+.v4-case-link span{font-size:13px;line-height:1.1}
+@media(prefers-reduced-motion:reduce){.v4-case-link{transition:none}}
