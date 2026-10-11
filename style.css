@@ -2174,10 +2174,6 @@ img {
   .hero-portrait {
     transform: none !important;
   }
-
-  .grain {
-    animation: none;
-  }
 }
 
 /* =========================================================
@@ -5208,7 +5204,7 @@ body.case-study-open {
   color: #c6a9b1;
 }
 .signature-work__lead {
-  font-family: var(--font-body), Arial, sans-serif;
+  font-family: var(--font-sans), Arial, sans-serif;
   font-size: clamp(15px,1.14vw,18px);
   line-height: 1.85;
   color: rgba(241,234,224,.72);
@@ -5268,7 +5264,7 @@ body.case-study-open {
   max-width: 1000px;
 }
 .signature-feature__kicker {
-  font: 500 11px/1.4 var(--font-body), Arial, sans-serif;
+  font: 500 11px/1.4 var(--font-sans), Arial, sans-serif;
   letter-spacing: .22em;
   color: #e0cbbb;
   margin: 0 0 clamp(18px,3vh,30px);
@@ -5290,7 +5286,7 @@ body.case-study-open {
   z-index: 3;
   right: clamp(24px,5vw,70px);
   bottom: clamp(20px,5vh,50px);
-  font: 500 10px/1.4 var(--font-body), Arial, sans-serif;
+  font: 500 10px/1.4 var(--font-sans), Arial, sans-serif;
   letter-spacing: .16em;
   color: rgba(255,255,255,.69);
 }
@@ -5308,7 +5304,7 @@ body.case-study-open {
   display: block;
   margin-bottom: clamp(25px,3vw,42px);
   color: #b7a4a4;
-  font: 600 11px/1.6 var(--font-body),Arial,sans-serif;
+  font: 600 11px/1.6 var(--font-sans),Arial,sans-serif;
   letter-spacing: .16em;
 }
 .signature-feature__details-heading h4 {
@@ -5322,7 +5318,7 @@ body.case-study-open {
   align-self: end;
 }
 .signature-feature__details-body p {
-  font: 400 clamp(15px,1.14vw,18px)/1.9 var(--font-body),Arial,sans-serif;
+  font: 400 clamp(15px,1.14vw,18px)/1.9 var(--font-sans),Arial,sans-serif;
   color: rgba(244,237,229,.76);
   max-width: 49ch;
   margin: 0 0 38px;
@@ -5337,7 +5333,7 @@ body.case-study-open {
   border-bottom: 1px solid rgba(239,234,225,.53);
   color: #f7f1e9;
   text-decoration: none;
-  font: 500 13px/1.5 var(--font-body),Arial,sans-serif;
+  font: 500 13px/1.5 var(--font-sans),Arial,sans-serif;
   transition: color .25s ease,border-color .25s ease;
 }
 .signature-feature__link span {
@@ -5409,7 +5405,7 @@ body.case-study-open {
   text-indent: .115em;
 }
 .signature-feature__aurelis-content > p:last-child {
-  font: 500 11px/1.5 var(--font-body),Arial,sans-serif;
+  font: 500 11px/1.5 var(--font-sans),Arial,sans-serif;
   letter-spacing: .4em;
   margin-top: 20px;
   color: #e1d6c3;
