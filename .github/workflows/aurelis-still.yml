@@ -1,0 +1,30 @@
+name: Capture Authentic AURELIS Still
+on:
+  push:
+    branches:
+      - portfolio-v3/signature-polish
+    paths:
+      - .github/workflows/aurelis-still.yml
+      - scripts/capture-aurelis.mjs
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: portfolio-v3/signature-polish
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save playwright sharp
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/capture-aurelis.mjs
+      - name: Commit approved real watch still
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/aurelis-watch.webp
+          git diff --cached --quiet || (git commit -m "Add authentic AURELIS watch still from live experience" && git push origin HEAD:portfolio-v3/signature-polish)
