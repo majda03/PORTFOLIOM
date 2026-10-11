@@ -111,7 +111,7 @@ try{
     const canonical=document.querySelector('link[rel="canonical"]')?.href;
     const metaDescription=document.querySelector('meta[name="description"]')?.content;
     const ogImage=new Image();
-    ogImage.src=image;
+    ogImage.src=new URL(new URL(image).pathname,location.origin).href;
     await new Promise((resolve,reject)=>{ogImage.onload=resolve;ogImage.onerror=reject;});
     return {image,canonical,hasDescription:!!metaDescription,width:ogImage.naturalWidth,height:ogImage.naturalHeight};
   });
