@@ -121,6 +121,18 @@ try{
   await motionPage.locator("#project-enquiry button[type=submit]").click();
   await motionPage.locator(".v3-form__status").getByText("Thank you. Your message has been sent.").waitFor({timeout:4000});
   console.log("FORMSPREE_QA","endpoint preserved, simulated success only, no live messages sent");
+  // Also verify a failed provider response does NOT claim delivery.
+  await motionPage.unroute("https://formspree.io/f/maqlanry");
+  await motionPage.route("https://formspree.io/f/maqlanry",route=>route.fulfill({
+    status:500,contentType:"application/json",headers:{"access-control-allow-origin":"*","access-control-allow-methods":"POST, OPTIONS"},body:JSON.stringify({error:"Temporary error"})
+  }));
+  await motionPage.locator('[name="name"]').fill("Portfolio QA");
+  await motionPage.locator('[name="email"]').fill("qa@example.invalid");
+  await motionPage.locator('[name="project_type"]').selectOption({label:"Frontend development"});
+  await motionPage.locator('[name="message"]').fill("Testing server failure response, with a fully mocked request, never sent.");
+  await motionPage.locator("#project-enquiry button[type=submit]").click();
+  await motionPage.locator(".v3-form__status").getByText("Something went wrong.",{exact:false}).waitFor({timeout:4000});
+  console.log("FORMSPREE_FAILURE_QA","simulated 500 correctly shows failure, not success, no live messages sent");
   const projectShot=await motionPage.screenshot({type:"jpeg",quality:46,fullPage:false});
   console.log("PORTFOLIO_V4_PREVIEW_projects::"+projectShot.toString("base64"));
   console.log("ANIMATION_CHECK",JSON.stringify({hiddenInitially,revealed,scrollY:await motionPage.evaluate(()=>window.scrollY)}));
