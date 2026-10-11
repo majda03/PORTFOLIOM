@@ -118,36 +118,6 @@ img {
   transform: translateY(0);
 }
 
-.grain {
-  position: fixed;
-  inset: -50%;
-  z-index: 1500;
-  width: 200%;
-  height: 200%;
-  pointer-events: none;
-  opacity: 0.032;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");
-  animation: grainShift 0.32s steps(2) infinite;
-}
-
-@keyframes grainShift {
-  0% {
-    transform: translate3d(0, 0, 0);
-  }
-  25% {
-    transform: translate3d(2%, -3%, 0);
-  }
-  50% {
-    transform: translate3d(-3%, 2%, 0);
-  }
-  75% {
-    transform: translate3d(3%, 4%, 0);
-  }
-  100% {
-    transform: translate3d(-2%, -2%, 0);
-  }
-}
-
 /* Shared editorial layout */
 
 .section {
@@ -2203,10 +2173,6 @@ img {
 
   .hero-portrait {
     transform: none !important;
-  }
-
-  .grain {
-    animation: none;
   }
 }
 
@@ -5192,4 +5158,321 @@ body.case-study-open {
   .royal-demo {
     min-height: clamp(500px, 34vw, 570px);
   }
+}
+
+
+/* =====================================================================
+   PORTFOLIO V2 — IMMERSIVE EDITORIAL
+   The visitor sees the work early. Motion is an invitation, not a gate.
+   This layer deliberately leaves the original portfolio styles intact.
+   ===================================================================== */
+:root {
+  --v2-ink: #080a0b;
+  --v2-cream: #f1eae0;
+  --v2-copper: #b9a08e;
+}
+.signature-work {
+  position: relative;
+  isolation: isolate;
+  color: var(--v2-cream);
+  background: var(--v2-ink);
+  border-top: 1px solid rgba(241,234,224,.15);
+}
+.signature-work__intro {
+  padding: clamp(92px, 12vw, 174px) var(--shell-x) clamp(62px,8vw,108px);
+  max-width: 1780px;
+  margin-inline: auto;
+}
+.signature-work__intro .section-index {
+  margin-bottom: clamp(30px,5vw,64px);
+}
+.signature-work__intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0,1.4fr) minmax(260px,.55fr);
+  gap: clamp(24px,6vw,112px);
+  align-items: end;
+}
+.signature-work__title {
+  font-family: var(--font-display), "Times New Roman", serif;
+  font-weight: 400;
+  line-height: .99;
+  letter-spacing: -.045em;
+  font-size: clamp(70px, 10.5vw, 170px);
+}
+.signature-work__title em {
+  font-weight: 400;
+  color: #c6a9b1;
+}
+.signature-work__lead {
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: clamp(15px,1.14vw,18px);
+  line-height: 1.85;
+  color: rgba(241,234,224,.72);
+  max-width: 38ch;
+  padding-bottom: .5em;
+}
+.signature-feature {
+  position: relative;
+  background: #0a1217;
+}
+.signature-feature--offing .signature-feature__scene {
+  height: 152svh;
+  min-height: 850px;
+  background: #08141b;
+}
+.signature-feature__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: #08141b;
+}
+.signature-feature__frame {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  background: #142730;
+  overflow: hidden;
+  transform: scale(var(--entry-scale,.90));
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+.signature-feature__photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52% 46%;
+}
+.signature-feature__shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(6,17,23,.12) 4%,rgba(6,17,23,.10) 38%,rgba(6,17,23,.72) 100%),
+    linear-gradient(90deg,rgba(6,17,23,.32) 0%,transparent 70%);
+}
+.signature-feature__scene-copy {
+  position: absolute;
+  left: clamp(24px,6vw,108px);
+  bottom: clamp(66px,11vh,148px);
+  z-index: 2;
+  max-width: 1000px;
+}
+.signature-feature__kicker {
+  font: 500 11px/1.4 var(--font-sans), Arial, sans-serif;
+  letter-spacing: .22em;
+  color: #e0cbbb;
+  margin: 0 0 clamp(18px,3vh,30px);
+}
+.signature-feature__scene-copy h3 {
+  font: 400 clamp(65px, 12vw, 214px)/.82 var(--font-display), Georgia, serif;
+  letter-spacing: -.055em;
+  color: #f7f2e8;
+  text-shadow: 0 4px 55px rgba(0,0,0,.16);
+}
+.signature-feature__scene-copy > p:last-child {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(23px,3vw,47px);
+  color: #f2eadf;
+  margin: 20px 0 0;
+}
+.signature-feature__scene-index {
+  position: absolute;
+  z-index: 3;
+  right: clamp(24px,5vw,70px);
+  bottom: clamp(20px,5vh,50px);
+  font: 500 10px/1.4 var(--font-sans), Arial, sans-serif;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.69);
+}
+.signature-feature__details {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(300px,.67fr);
+  gap: clamp(36px,8vw,150px);
+  padding: clamp(76px,9vw,145px) var(--shell-x);
+  max-width: 1780px;
+  margin-inline: auto;
+}
+.signature-feature__type {
+  display: block;
+  margin-bottom: clamp(25px,3vw,42px);
+  color: #b7a4a4;
+  font: 600 11px/1.6 var(--font-sans),Arial,sans-serif;
+  letter-spacing: .16em;
+}
+.signature-feature__details-heading h4 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(49px,5.4vw,88px);
+  letter-spacing: -.035em;
+  line-height: 1.07;
+  font-weight: 400;
+}
+.signature-feature__details-body {
+  align-self: end;
+}
+.signature-feature__details-body p {
+  font: 400 clamp(15px,1.14vw,18px)/1.9 var(--font-sans),Arial,sans-serif;
+  color: rgba(244,237,229,.76);
+  max-width: 49ch;
+  margin: 0 0 38px;
+}
+.signature-feature__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%,360px);
+  min-height: 54px;
+  gap: 30px;
+  border-bottom: 1px solid rgba(239,234,225,.53);
+  color: #f7f1e9;
+  text-decoration: none;
+  font: 500 13px/1.5 var(--font-sans),Arial,sans-serif;
+  transition: color .25s ease,border-color .25s ease;
+}
+.signature-feature__link span {
+  font-size: 24px;
+  transition: transform .25s ease;
+}
+.signature-feature__link:hover,.signature-feature__link:focus-visible {
+  color: #e0b2bd;
+  border-color: currentColor;
+}
+.signature-feature__link:hover span,.signature-feature__link:focus-visible span {
+  transform: translate(4px,-4px);
+}
+.signature-feature__link:focus-visible {
+  outline: 2px solid #e0b2bd;
+  outline-offset: 6px;
+}
+.signature-feature--aurelis {
+  background: #061a13;
+}
+.signature-feature__aurelis-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: min(84svh,900px);
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 57% 37%,rgba(35,103,77,.82),transparent 65%),
+    radial-gradient(ellipse at 5% 83%,rgba(20,63,48,.85),transparent 65%),#051910;
+}
+.signature-feature__aurelis-texture {
+  position: absolute;
+  inset: 0;
+  opacity: .58;
+  background: url("https://aurelis-atelier-omega.vercel.app/images/emerald-satin.png") center center / cover no-repeat;
+  mix-blend-mode: soft-light;
+  transform: scale(1.045);
+}
+.signature-feature__aurelis-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(ellipse at 50% 48%,transparent 14%,rgba(3,17,12,.43) 94%);
+  pointer-events: none;
+}
+.signature-feature__aurelis-content {
+  z-index: 1;
+  width: min(90%,1250px);
+  text-align: center;
+  padding: 110px 25px;
+}
+.signature-feature__aurelis-content .signature-feature__kicker {
+  margin-bottom: clamp(28px,4vw,55px);
+}
+.signature-feature__aurelis-wordmark {
+  display: block;
+  font: 400 clamp(100px,22vw,320px)/.6 var(--font-display),Georgia,serif;
+  color: rgba(229,218,192,.12);
+  letter-spacing: -.05em;
+  margin-bottom: clamp(20px,4vw,60px);
+  user-select: none;
+}
+.signature-feature__aurelis-content h3 {
+  font: 400 clamp(64px,12vw,190px)/.95 var(--font-display),Georgia,serif;
+  letter-spacing: .115em;
+  color: #f1e9d8;
+  text-indent: .115em;
+}
+.signature-feature__aurelis-content > p:last-child {
+  font: 500 11px/1.5 var(--font-sans),Arial,sans-serif;
+  letter-spacing: .4em;
+  margin-top: 20px;
+  color: #e1d6c3;
+}
+.signature-feature--aurelis .signature-feature__type {color:#9eaf9e}
+.signature-feature--aurelis .signature-feature__details {padding-bottom: clamp(95px,12vw,175px)}
+/* Screen-reader/reduced-motion safe: nothing is hidden before the observer fires. */
+@media (max-width: 900px) {
+  .signature-work__intro-grid {grid-template-columns: 1fr;gap: 24px}
+  .signature-work__lead {max-width: 55ch;}
+  .signature-feature__details {grid-template-columns: 1fr;gap: 30px}
+  .signature-feature__details-body {align-self: start;}
+}
+@media (max-width: 700px) {
+  .signature-work__intro {padding: 80px var(--shell-x) 58px}
+  .signature-work__title {font-size: clamp(54px, 14vw, 92px)}
+  .signature-feature--offing .signature-feature__scene {height: auto;min-height: 0;}
+  .signature-feature__sticky {position: relative;height: auto;min-height:0;display:block;overflow: visible;}
+  .signature-feature__frame {height: 75svh;min-height: 490px;transform: none !important;}
+  .signature-feature__photo {object-position: 49% center;}
+  .signature-feature__scene-copy {left:24px;bottom:76px;max-width:calc(100% - 48px);}
+  .signature-feature__scene-copy h3 {font-size: clamp(58px,13.3vw,100px);}
+  .signature-feature__scene-copy > p:last-child {font-size: 23px;margin-top: 17px}
+  .signature-feature__scene-index {left:24px;right:auto;bottom:22px;font-size:9px}
+  .signature-feature__details {padding: 63px var(--shell-x) 88px;}
+  .signature-feature__details-heading h4 {font-size:clamp(48px,10vw,76px);}
+  .signature-feature__details-body p {margin-bottom: 22px;}
+  .signature-feature__aurelis-stage {min-height: 70svh;}
+  .signature-feature__aurelis-content {padding:100px 5px}
+  .signature-feature__aurelis-content h3 {font-size: clamp(49px,12vw,82px);letter-spacing:.075em;text-indent:.075em}
+  .signature-feature__aurelis-wordmark {font-size: 150px;}
+}
+@media (max-width: 390px) {
+  .signature-feature__scene-copy h3 {font-size: 54px}
+  .signature-feature__aurelis-content h3 {font-size: 45px}
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature-feature__frame {transform:none!important;will-change:auto;}
+  .signature-feature__link,.signature-feature__link span {transition:none;}
+  .signature-feature__link:hover span {transform:none;}
+}
+
+/* Two honest ways to engage with a project: understand it, or experience it. */
+.signature-feature__actions {display:flex;flex-direction:column;align-items:flex-start;gap:13px;}
+.signature-feature__case-study {
+  display:inline-flex;align-items:center;gap:36px;
+  min-height:42px;padding:0;background:transparent;
+  color:rgba(244,237,229,.76);cursor:pointer;
+  font:500 12px/1.5 var(--font-sans),Arial,sans-serif;
+  letter-spacing:.01em;
+  transition:color .2s ease;
+}
+.signature-feature__case-study span {font-size:22px;font-weight:300;}
+.signature-feature__case-study:hover,.signature-feature__case-study:focus-visible {color:#f5e7d7;}
+.signature-feature__case-study:focus-visible {outline:2px solid #e0b2bd;outline-offset:5px;}
+@media (prefers-reduced-motion:reduce) {.signature-feature__case-study{transition:none;}}
+
+.signature-work__inquiry {
+  max-width:1780px;margin-inline:auto;padding:clamp(28px,4vw,54px) var(--shell-x);
+  border-top:1px solid rgba(241,234,224,.15);display:flex;align-items:center;
+  justify-content:space-between;gap:24px;
+}
+.signature-work__inquiry p {font:400 clamp(25px,3vw,44px)/1.15 var(--font-display),Georgia,serif;color:#f0e9df;}
+.signature-work__inquiry a {font:500 13px/1.45 var(--font-sans),Arial,sans-serif;letter-spacing:.02em;
+ display:inline-flex;gap:42px;align-items:center;justify-content:space-between;
+ border-bottom:1px solid rgba(241,234,224,.52);padding:14px 0;color:#eee2d7;}
+.signature-work__inquiry a:hover,.signature-work__inquiry a:focus-visible {color:#e1b5be;}
+@media(max-width:620px){
+ .signature-work__inquiry{flex-direction:column;align-items:flex-start;gap:8px;padding-block:38px 58px;}
 }

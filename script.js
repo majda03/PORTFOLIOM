@@ -144,6 +144,9 @@ if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
 
 const processSection = document.querySelector(".process");
 const processFill = document.querySelector(".process-line span");
+/* One scroll-led transition on wide screens. Normal scrolling is never blocked. */
+const immersiveEntry = document.querySelector("[data-immersive-entry]");
+const immersiveFrame = immersiveEntry?.querySelector(".signature-feature__frame");
 let scrollFrame = null;
 
 const updateOnScroll = () => {
@@ -157,6 +160,17 @@ const updateOnScroll = () => {
   }
 
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
+
+  if (immersiveEntry && immersiveFrame) {
+    if (prefersReducedMotion.matches || window.innerWidth <= 700) {
+      immersiveFrame.style.removeProperty("--entry-scale");
+    } else {
+      const rect = immersiveEntry.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      const amount = Math.max(0, Math.min(1, -rect.top / travel));
+      immersiveFrame.style.setProperty("--entry-scale", (0.9 + amount * 0.1).toFixed(4));
+    }
+  }
 
   if (processSection && processFill) {
     const rect = processSection.getBoundingClientRect();
@@ -1054,6 +1068,50 @@ const createCaseStudyFallbackImage = (project) => {
 };
 
 const portfolioProjects = {
+  "offing-line": {
+    number: "01",
+    category: "Independent Concept · Yacht Charter",
+    title: "OFFING LINE",
+    intro: "A quiet, editorial approach to planning a private journey along the Adriatic.",
+    image: "https://offing-line.vercel.app/images/passage-retouched-1920.webp",
+    imageAlt: "Private motor yacht on open Adriatic water from the OFFING LINE experience",
+    role: "Creative Direction · Frontend Development · Interaction Design",
+    stack: "React 19 · Vite · JavaScript · CSS · Responsive UI",
+    year: "2026",
+    challenge: "Make an exclusive charter experience feel personal and easy to explore, without turning the website into a complicated booking engine.",
+    approach: "I gave the photography and itinerary room to breathe, then connected the destinations, vessel selection and enquiry flow. The planner remembers choices as visitors move through the site.",
+    result: "A five-section concept website with a working passage planner, editable preferences, itinerary review and a clear enquiry journey.",
+    features: [
+      "Destination and vessel choices feed into one passage planner",
+      "Editable trip preferences and personal note",
+      "Review step before preparing an enquiry",
+      "Responsive editorial layouts, dialogs and interaction testing"
+    ],
+    liveUrl: "https://offing-line.vercel.app/",
+    codeUrl: ""
+  },
+  "aurelis-atelier": {
+    number: "02",
+    category: "Independent Concept · Interactive Timepiece",
+    title: "AURELIS",
+    intro: "A watch concept explored through movement, light and a six-chapter digital story.",
+    image: "https://aurelis-atelier-omega.vercel.app/images/emerald-satin.png",
+    imageAlt: "Deep emerald satin visual texture used in the AURELIS timepiece experience",
+    role: "Creative Direction · 3D Frontend Development · Motion",
+    stack: "Next.js 16 · React · TypeScript · Three.js · WebGL",
+    year: "2026",
+    challenge: "Present an intricate watch as an experience people can explore, while keeping the navigation and next steps clear.",
+    approach: "I designed a chapter-led narrative around a real-time 3D watch, pairing restrained editorial typography with purposeful controls and mobile-specific composition.",
+    result: "A live 3D timepiece experience with six visual chapters, guided transitions and an interactive 360-degree viewing option.",
+    features: [
+      "Real-time Three.js watch rendering",
+      "Six scroll-led chapters",
+      "Interactive 360-degree view",
+      "Responsive composition for desktop and mobile"
+    ],
+    liveUrl: "https://aurelis-atelier-omega.vercel.app/",
+    codeUrl: ""
+  },
   "coded-vibrations": {
     number: "01",
     category: "Creative Studio Website",
