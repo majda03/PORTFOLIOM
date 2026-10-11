@@ -3,10 +3,12 @@ on:
   push:
     branches:
       - portfolio-v3/signature-polish
+      - portfolio-v4/clarity-and-motion
     paths:
       - index.html
       - all-work.html
       - portfolio-v3.css
+      - portfolio-v4.css
       - portfolio-v3.js
       - images/aurelis-watch.webp
       - scripts/check-portfolio.mjs
