@@ -171,7 +171,7 @@
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="grain" aria-hidden="true"></div>
+    
     <div class="cursor" aria-hidden="true"></div>
     <div class="cursor-dot" aria-hidden="true"></div>
     <div class="page-progress" aria-hidden="true"><span></span></div>
@@ -188,11 +188,11 @@
         <span></span><span></span>
       </button>
       <nav class="site-nav" id="main-navigation" aria-label="Main navigation">
+        <a href="#signature-work">Selected Work</a>
+        <a href="#applications">Applications</a>
+        <a href="#work">More Work</a>
         <a href="#about">About</a>
-        <a href="#capabilities">Capabilities</a>
-        <a href="#applications">Engineering</a>
-        <a href="#work">Visual Work</a>
-        <a href="#process">Process</a>
+        <a href="#capabilities">Expertise</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
@@ -210,12 +210,12 @@
             Frontend Developer <i>&amp;</i> Visual Designer
           </p>
           <p class="hero-intro reveal-item">
-            I build responsive React and TypeScript applications and high-end web
-            experiences where product logic, reusable systems and visual
-            direction work as one.
+            I design and develop websites that make a strong first impression
+            and work just as well beyond it — from distinctive brand sites
+            to practical, carefully built applications.
           </p>
           <div class="hero-actions reveal-item">
-            <a class="button button-solid" href="#applications">View engineering work</a>
+            <a class="button button-solid" href="#signature-work">Explore selected work</a>
             <a class="text-link" href="#contact"
               >Let’s work together <span>↗</span></a
             >
@@ -248,294 +248,85 @@
         </div>
 
         <a
-          href="#about"
+          href="#signature-work"
           class="scroll-cue"
-          aria-label="Scroll to about section"
+          aria-label="Scroll to selected work"
         >
           <span>Scroll</span>
           <i></i>
         </a>
       </section>
-      <section class="about section" id="about">
-        <div class="section-index reveal">01 / About</div>
-
-        <div class="about-grid">
-          <h2 class="about-quote">
-            Every detail<br>
-            deserves<br>
-            intention.
-          </h2>
-
-          <div class="about-content">
-            <p class="about-label">MY APPROACH</p>
-
-            <p>
-              I care about the complete interface — not only how it looks, but
-              how it behaves, scales and guides a user through real decisions.
-              My work combines frontend engineering with a strong visual eye.
-            </p>
-
-            <p>
-              In application work, that means reusable components, deliberate
-              state, predictable flows and responsive behavior. In visual work,
-              it means hierarchy, rhythm and detail that make the experience feel
-              considered rather than generic.
-            </p>
-
-            <p class="about-ending">
-              Good interfaces feel clear before they feel clever.
-            </p>
-
-            <div class="signature">Majda Kapetanović</div>
+      
+      <!-- Portfolio v2: a deliberately short route from introduction to proof. -->
+      <section class="signature-work" id="signature-work" aria-labelledby="signature-work-title">
+        <div class="signature-work__intro">
+          <p class="section-index reveal">01 / Selected Work</p>
+          <div class="signature-work__intro-grid">
+            <h2 class="signature-work__title reveal" id="signature-work-title">The work<br><em>speaks first.</em></h2>
+            <p class="signature-work__lead reveal">I start with what people need to understand, then design the experience around it. These two independent concepts show that approach in practice.</p>
           </div>
         </div>
-      </section>
 
-      <section class="capabilities section" id="capabilities">
-        <div class="section-heading reveal">
-          <p class="section-index">02 / Capabilities</p>
-
-          <h2 class="section-title">What I bring to a project.</h2>
-        </div>
-
-        <div class="capabilities-grid reveal">
-          <span>FRONTEND ENGINEERING</span>
-          <span>REACT DEVELOPMENT</span>
-          <span>TYPESCRIPT</span>
-          <span>JAVASCRIPT (ES6+)</span>
-          <span>APPLICATION ARCHITECTURE</span>
-          <span>COMPONENT-BASED UI</span>
-          <span>CONTEXT API &amp; STATE MANAGEMENT</span>
-          <span>REACT ROUTER</span>
-          <span>E-COMMERCE SYSTEMS</span>
-          <span>FORM VALIDATION</span>
-          <span>LOCAL STORAGE &amp; PERSISTENCE</span>
-          <span>RESPONSIVE UI DEVELOPMENT</span>
-          <span>UI DESIGN &amp; IMPLEMENTATION</span>
-          <span>INTERACTION &amp; MOTION</span>
-          <span>GIT, GITHUB &amp; VERCEL</span>
-        </div>
-      </section>
-
-      <section class="work section" id="work">
-        <div class="work-heading reveal">
-          <p class="section-index">03 / Visual Work</p>
-
-          <h2 class="section-title">
-            Selected visual experiences.
-          </h2>
-        </div>
-
-        <div class="work-layout">
-          <!-- 01 / CODED VIBRATIONS — velika kartica -->
-          <article class="work-card work-card-wide reveal-project">
-            <div class="work-image">
-              <picture>
-                <source
-                  type="image/webp"
-                  srcset="images/coded-vibrations-800.webp 800w, images/coded-vibrations-1200.webp 1200w"
-                  sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1180px) 90vw, 1200px"
-                >
+        <article class="signature-feature signature-feature--offing" aria-labelledby="offing-portfolio-title">
+          <div class="signature-feature__scene" data-immersive-entry>
+            <div class="signature-feature__sticky">
+              <div class="signature-feature__frame">
                 <img
-                  src="images/coded-vibrations.jpeg"
-                  alt="Coded Vibrations premium website"
-                  width="1600"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-               >
-              </picture>
-            </div>
-
-            <div class="work-info">
-              <div>
-                <span class="work-number">01</span>
-                <p class="work-category">Creative Studio Website</p>
-              </div>
-
-              <div class="work-copy">
-                <h3>Coded Vibrations</h3>
-
-                <p>
-                  A refined digital presence created for businesses that want to
-                  look premium, credible and memorable online.
-                </p>
-              </div>
-
-              <div class="work-actions">
-                <button
-                  class="work-case-study"
-                  type="button"
-                  data-case-study="coded-vibrations"
+                  class="signature-feature__photo"
+                  src="https://offing-line.vercel.app/images/passage-retouched-1920.webp"
+                  alt="An aerial view of a yacht moving through the dark blue Adriatic, leaving a white wake"
+                  width="1920" height="1440" loading="lazy" decoding="async"
                 >
-                  Case study <span>＋</span>
-                </button>
-                <a
-                  href="https://majda03.github.io/Premium-Landing/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="work-link"
-                >
-                  Live project <span>↗</span>
-                </a>
+                <div class="signature-feature__shade" aria-hidden="true"></div>
+                <div class="signature-feature__scene-copy">
+                  <p class="signature-feature__kicker">01 / PRIVATE CHARTER · ADRIATIC</p>
+                  <h3 id="offing-portfolio-title">OFFING LINE</h3>
+                  <p>The coast has another side.</p>
+                </div>
+                <span class="signature-feature__scene-index" aria-hidden="true">SELECTED WORK / 01</span>
               </div>
             </div>
-          </article>
-
-          <!-- dva projekta jedan pored drugog -->
-          <div class="work-pair">
-            <!-- 02 / NOÉRA -->
-            <article class="work-card reveal-project">
-              <div class="work-image">
-                <img
-                  src="images/b.png"
-                  alt="Noera fashion editorial website"
-                  width="1877"
-                  height="906"
-                  loading="lazy"
-                  decoding="async"
-               >
-              </div>
-
-              <div class="work-info work-info-small">
-                <div>
-                  <span class="work-number">02</span>
-                  <p class="work-category">Fashion Editorial</p>
-                </div>
-
-                <div class="work-copy">
-                  <h3>Noéra</h3>
-
-                  <p>
-                    An editorial web experience shaped through atmosphere,
-                    restraint and visual storytelling.
-                  </p>
-                </div>
-
-                <div class="work-actions">
-                  <button
-                    class="work-case-study"
-                    type="button"
-                    data-case-study="noera"
-                  >
-                    Case study <span>＋</span>
-                  </button>
-                  <a
-                    href="https://majda03.github.io/Noera-Fashion-Landing-Page/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="work-link"
-                  >
-                    Live project <span>↗</span>
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            <!-- 03 / VESPER AIR -->
-            <article class="work-card reveal-project">
-              <div class="work-image">
-                <img
-                  src="images/vesper-air.jpeg"
-                  alt="Vesper Air luxury aviation website"
-                  width="1600"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-               >
-              </div>
-
-              <div class="work-info work-info-small">
-                <div>
-                  <span class="work-number">03</span>
-                  <p class="work-category">Private Aviation</p>
-                </div>
-
-                <div class="work-copy">
-                  <h3>Vesper Air</h3>
-
-                  <p>
-                    A private aviation experience designed around precision,
-                    exclusivity and quiet confidence.
-                  </p>
-                </div>
-
-                <div class="work-actions">
-                  <button
-                    class="work-case-study"
-                    type="button"
-                    data-case-study="vesper-air"
-                  >
-                    Case study <span>＋</span>
-                  </button>
-                  <a
-                    href="https://majda03.github.io/Premium-vibe-Landing-Page/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="work-link"
-                  >
-                    Live project <span>↗</span>
-                  </a>
-                </div>
-              </div>
-            </article>
           </div>
-
-          <!-- 04 / LUMEN ATELIER — velika kartica -->
-          <article class="work-card work-card-wide reveal-project">
-            <div class="work-image">
-              <img
-                src="images/lumen-atelier.jpeg"
-                alt="Lumen Atelier interior design website"
-                width="1600"
-                height="900"
-                loading="lazy"
-                decoding="async"
-             >
+          <div class="signature-feature__details reveal">
+            <div class="signature-feature__details-heading">
+              <span class="signature-feature__type">INDEPENDENT CONCEPT · REACT / VITE</span>
+              <h4>Built around the journey,<br>not just the destination.</h4>
             </div>
-
-            <div class="work-info">
-              <div>
-                <span class="work-number">04</span>
-                <p class="work-category">Interior Design</p>
-              </div>
-
-              <div class="work-copy">
-                <h3>Lumen Atelier</h3>
-
-                <p>
-                  A calm architectural experience exploring light, space,
-                  material and emotional atmosphere.
-                </p>
-              </div>
-
-              <div class="work-actions">
-                <button
-                  class="work-case-study"
-                  type="button"
-                  data-case-study="lumen-atelier"
-                >
-                  Case study <span>＋</span>
-                </button>
-                <a
-                  href="https://majda03.github.io/LUMEN-Atelier/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="work-link"
-                >
-                  Live project <span>↗</span>
-                </a>
-              </div>
+            <div class="signature-feature__details-body">
+              <p>A boutique yacht-charter concept for the Adriatic. Visitors can explore destinations and vessels, then bring their choices together in a single passage planner.</p>
+              <a class="signature-feature__link" href="https://offing-line.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Explore OFFING LINE live website in a new tab">Explore the live experience <span aria-hidden="true">↗</span></a>
             </div>
-          </article>
-        </div>
+          </div>
+        </article>
+
+        <article class="signature-feature signature-feature--aurelis" aria-labelledby="aurelis-portfolio-title">
+          <div class="signature-feature__aurelis-stage reveal-image">
+            <div class="signature-feature__aurelis-texture" aria-hidden="true"></div>
+            <div class="signature-feature__aurelis-content">
+              <p class="signature-feature__kicker">02 / INTERACTIVE 3D · TIMEPIECE</p>
+              <span class="signature-feature__aurelis-wordmark" aria-hidden="true">A</span>
+              <h3 id="aurelis-portfolio-title">AURELIS</h3>
+              <p>THE ART OF TIME</p>
+            </div>
+            <span class="signature-feature__scene-index" aria-hidden="true">SELECTED WORK / 02</span>
+          </div>
+          <div class="signature-feature__details reveal">
+            <div class="signature-feature__details-heading">
+              <span class="signature-feature__type">INDEPENDENT CONCEPT · THREE.JS / NEXT.JS</span>
+              <h4>Something worth<br>looking closer at.</h4>
+            </div>
+            <div class="signature-feature__details-body">
+              <p>A procedural 3D watch, brought to life through a scroll-led story and an interactive 360° view. Every angle is part of the experience.</p>
+              <a class="signature-feature__link" href="https://aurelis-atelier-omega.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="Explore AURELIS interactive 3D website in a new tab">Explore the 3D experience <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
+        </article>
       </section>
-
-      <section class="application-systems section" id="applications">
+<section class="application-systems section" id="applications">
         <div class="application-systems__glow" aria-hidden="true"></div>
 
         <header class="application-systems__heading reveal">
-          <p class="section-label">04 / Engineering Work</p>
+          <p class="section-label">02 / Product &amp; Engineering</p>
           <div class="application-systems__intro">
             <p class="application-systems__eyebrow">
               React · TypeScript · Product systems
@@ -1051,6 +842,281 @@
         </div>
       </section>
 
+      <section class="work section" id="work">
+        <div class="work-heading reveal">
+          <p class="section-index">03 / More Explorations</p>
+
+          <h2 class="section-title">
+            More worlds, same care.
+          </h2>
+        </div>
+
+        <div class="work-layout">
+          <!-- 01 / CODED VIBRATIONS — velika kartica -->
+          <article class="work-card work-card-wide reveal-project">
+            <div class="work-image">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="images/coded-vibrations-800.webp 800w, images/coded-vibrations-1200.webp 1200w"
+                  sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1180px) 90vw, 1200px"
+                >
+                <img
+                  src="images/coded-vibrations.jpeg"
+                  alt="Coded Vibrations premium website"
+                  width="1600"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+               >
+              </picture>
+            </div>
+
+            <div class="work-info">
+              <div>
+                <span class="work-number">01</span>
+                <p class="work-category">Creative Studio Website</p>
+              </div>
+
+              <div class="work-copy">
+                <h3>Coded Vibrations</h3>
+
+                <p>
+                  A refined digital presence created for businesses that want to
+                  look premium, credible and memorable online.
+                </p>
+              </div>
+
+              <div class="work-actions">
+                <button
+                  class="work-case-study"
+                  type="button"
+                  data-case-study="coded-vibrations"
+                >
+                  Case study <span>＋</span>
+                </button>
+                <a
+                  href="https://majda03.github.io/Premium-Landing/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="work-link"
+                >
+                  Live project <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- dva projekta jedan pored drugog -->
+          <div class="work-pair">
+            <!-- 02 / NOÉRA -->
+            <article class="work-card reveal-project">
+              <div class="work-image">
+                <img
+                  src="images/b.png"
+                  alt="Noera fashion editorial website"
+                  width="1877"
+                  height="906"
+                  loading="lazy"
+                  decoding="async"
+               >
+              </div>
+
+              <div class="work-info work-info-small">
+                <div>
+                  <span class="work-number">02</span>
+                  <p class="work-category">Fashion Editorial</p>
+                </div>
+
+                <div class="work-copy">
+                  <h3>Noéra</h3>
+
+                  <p>
+                    An editorial web experience shaped through atmosphere,
+                    restraint and visual storytelling.
+                  </p>
+                </div>
+
+                <div class="work-actions">
+                  <button
+                    class="work-case-study"
+                    type="button"
+                    data-case-study="noera"
+                  >
+                    Case study <span>＋</span>
+                  </button>
+                  <a
+                    href="https://majda03.github.io/Noera-Fashion-Landing-Page/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="work-link"
+                  >
+                    Live project <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- 03 / VESPER AIR -->
+            <article class="work-card reveal-project">
+              <div class="work-image">
+                <img
+                  src="images/vesper-air.jpeg"
+                  alt="Vesper Air luxury aviation website"
+                  width="1600"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+               >
+              </div>
+
+              <div class="work-info work-info-small">
+                <div>
+                  <span class="work-number">03</span>
+                  <p class="work-category">Private Aviation</p>
+                </div>
+
+                <div class="work-copy">
+                  <h3>Vesper Air</h3>
+
+                  <p>
+                    A private aviation experience designed around precision,
+                    exclusivity and quiet confidence.
+                  </p>
+                </div>
+
+                <div class="work-actions">
+                  <button
+                    class="work-case-study"
+                    type="button"
+                    data-case-study="vesper-air"
+                  >
+                    Case study <span>＋</span>
+                  </button>
+                  <a
+                    href="https://majda03.github.io/Premium-vibe-Landing-Page/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="work-link"
+                  >
+                    Live project <span>↗</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- 04 / LUMEN ATELIER — velika kartica -->
+          <article class="work-card work-card-wide reveal-project">
+            <div class="work-image">
+              <img
+                src="images/lumen-atelier.jpeg"
+                alt="Lumen Atelier interior design website"
+                width="1600"
+                height="900"
+                loading="lazy"
+                decoding="async"
+             >
+            </div>
+
+            <div class="work-info">
+              <div>
+                <span class="work-number">04</span>
+                <p class="work-category">Interior Design</p>
+              </div>
+
+              <div class="work-copy">
+                <h3>Lumen Atelier</h3>
+
+                <p>
+                  A calm architectural experience exploring light, space,
+                  material and emotional atmosphere.
+                </p>
+              </div>
+
+              <div class="work-actions">
+                <button
+                  class="work-case-study"
+                  type="button"
+                  data-case-study="lumen-atelier"
+                >
+                  Case study <span>＋</span>
+                </button>
+                <a
+                  href="https://majda03.github.io/LUMEN-Atelier/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="work-link"
+                >
+                  Live project <span>↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about section" id="about">
+        <div class="section-index reveal">04 / About</div>
+
+        <div class="about-grid">
+          <h2 class="about-quote">
+            Every detail<br>
+            deserves<br>
+            intention.
+          </h2>
+
+          <div class="about-content">
+            <p class="about-label">MY APPROACH</p>
+
+            <p>
+              I care about the complete interface — not only how it looks, but
+              how it behaves, scales and guides a user through real decisions.
+              My work combines frontend engineering with a strong visual eye.
+            </p>
+
+            <p>
+              In application work, that means reusable components, deliberate
+              state, predictable flows and responsive behavior. In visual work,
+              it means hierarchy, rhythm and detail that make the experience feel
+              considered rather than generic.
+            </p>
+
+            <p class="about-ending">
+              Good interfaces feel clear before they feel clever.
+            </p>
+
+            <div class="signature">Majda Kapetanović</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="capabilities section" id="capabilities">
+        <div class="section-heading reveal">
+          <p class="section-index">05 / Expertise</p>
+
+          <h2 class="section-title">What I bring to a project.</h2>
+        </div>
+
+        <div class="capabilities-grid reveal">
+          <span>FRONTEND ENGINEERING</span>
+          <span>REACT DEVELOPMENT</span>
+          <span>TYPESCRIPT</span>
+          <span>JAVASCRIPT (ES6+)</span>
+          <span>APPLICATION ARCHITECTURE</span>
+          <span>COMPONENT-BASED UI</span>
+          <span>CONTEXT API &amp; STATE MANAGEMENT</span>
+          <span>REACT ROUTER</span>
+          <span>E-COMMERCE SYSTEMS</span>
+          <span>FORM VALIDATION</span>
+          <span>LOCAL STORAGE &amp; PERSISTENCE</span>
+          <span>RESPONSIVE UI DEVELOPMENT</span>
+          <span>UI DESIGN &amp; IMPLEMENTATION</span>
+          <span>INTERACTION &amp; MOTION</span>
+          <span>GIT, GITHUB &amp; VERCEL</span>
+        </div>
+      </section>
+
       <section class="process section" id="process">
         <div class="section-heading reveal">
           <div class="section-index">05 / Process</div>
@@ -1097,7 +1163,7 @@
       </section>
       <section class="contact section" id="contact">
         <div class="contact-inner reveal">
-          <p class="section-index">06 / Contact</p>
+          <p class="section-index">07 / Contact</p>
 
           <h2>
             Have a project<br>
