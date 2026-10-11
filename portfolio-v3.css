@@ -203,3 +203,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
  .js [data-v3-reveal]{opacity:1;transform:none}
 }
+
+/* Personal note belongs with the working philosophy, not in another full section. */
+.v3-approach__bio{
+  grid-column:1 / -1;
+  margin:0;padding-top:35px;border-top:1px solid var(--line);
+  max-width:950px;color:#c9babd;
+  font:400 clamp(15px,1.4vw,20px)/1.85 var(--sans);
+}
+@media(min-width:701px) {
+  .js .v3-project.is-visible .v3-project__visual{clip-path:inset(0 0 0 0)}
+  .js .v3-project .v3-project__visual{
+    clip-path:inset(0 0 9% 0);
+    transition:clip-path .95s var(--ease),background-color .4s ease;
+  }
+}
+@media(max-width:700px){
+  .v3-approach__bio{padding-top:24px;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .js .v3-project .v3-project__visual{clip-path:none!important;transition:none!important}
+}
