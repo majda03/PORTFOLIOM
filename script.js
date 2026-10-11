@@ -144,6 +144,9 @@ if (prefersReducedMotion.matches || !("IntersectionObserver" in window)) {
 
 const processSection = document.querySelector(".process");
 const processFill = document.querySelector(".process-line span");
+/* One scroll-led transition on wide screens. Normal scrolling is never blocked. */
+const immersiveEntry = document.querySelector("[data-immersive-entry]");
+const immersiveFrame = immersiveEntry?.querySelector(".signature-feature__frame");
 let scrollFrame = null;
 
 const updateOnScroll = () => {
@@ -157,6 +160,17 @@ const updateOnScroll = () => {
   }
 
   header?.classList.toggle("is-scrolled", window.scrollY > 24);
+
+  if (immersiveEntry && immersiveFrame) {
+    if (prefersReducedMotion.matches || window.innerWidth <= 700) {
+      immersiveFrame.style.removeProperty("--entry-scale");
+    } else {
+      const rect = immersiveEntry.getBoundingClientRect();
+      const travel = Math.max(1, rect.height - window.innerHeight);
+      const amount = Math.max(0, Math.min(1, -rect.top / travel));
+      immersiveFrame.style.setProperty("--entry-scale", (0.9 + amount * 0.1).toFixed(4));
+    }
+  }
 
   if (processSection && processFill) {
     const rect = processSection.getBoundingClientRect();
