@@ -106,6 +106,17 @@ try{
     if(checks.h1!==1||!checks.canonical?.endsWith(path)||!checks.image||checks.copy!==3||checks.overflow)failed=true;
   }
   await launchPage.goto("http://127.0.0.1:"+port+"/",{waitUntil:"load"});
+  const sharing=await launchPage.evaluate(async()=>{
+    const image=document.querySelector('meta[property="og:image"]')?.content;
+    const canonical=document.querySelector('link[rel="canonical"]')?.href;
+    const metaDescription=document.querySelector('meta[name="description"]')?.content;
+    const ogImage=new Image();
+    ogImage.src=image;
+    await new Promise((resolve,reject)=>{ogImage.onload=resolve;ogImage.onerror=reject;});
+    return {image,canonical,hasDescription:!!metaDescription,width:ogImage.naturalWidth,height:ogImage.naturalHeight};
+  });
+  console.log("SOCIAL_PREVIEW",JSON.stringify(sharing));
+  if(sharing.width<600||sharing.height<315||!sharing.hasDescription||sharing.canonical!=="https://majdakapetanovic.com/")failed=true;
   const studies=await launchPage.locator(".v3-feature-grid .v4-case-link").count();
   const cssCount=await launchPage.locator('link[rel="stylesheet"][href*="portfolio"]').count();
   const fontUrl=await launchPage.locator('link[href*="fonts.googleapis.com/css2"]').getAttribute("href");
