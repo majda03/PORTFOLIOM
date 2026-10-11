@@ -62,6 +62,14 @@ try{
     });
     console.log("DEBUG_V4", JSON.stringify(debug));
   }
+  if(type==="desktop"){
+    const align=await page.evaluate(()=>{
+      const bounds=sel=>{const r=document.querySelector(sel).getBoundingClientRect();return {left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)}};
+      return {aboutTitle:bounds(".v4-about__identity"),aboutText:bounds(".v4-about__story"),toolkitLabel:bounds(".v4-toolkit .v3-overline"),toolkitText:bounds(".v4-toolkit p"),contactForm:bounds("#project-enquiry"),portrait:bounds(".v4-hero__portrait"),viewport:innerWidth,rights:document.querySelector(".v4-footer__base")?.textContent.includes("ALL RIGHTS RESERVED.")};
+    });
+    console.log("DESKTOP_FINAL_ALIGNMENT",JSON.stringify(align));
+    if(align.aboutText.left<=align.aboutTitle.right+25||Math.abs(align.aboutText.left-align.toolkitText.left)>2||!align.rights||align.portrait.right>align.viewport-22)failed=true;
+  }
   await page.screenshot({path:"qa-screenshots/"+type+"-home.png",fullPage:true});
   if (type === "iphone" || type === "desktop") {
     const preview = await page.screenshot({type:"jpeg",quality:46,fullPage:false});
