@@ -43,7 +43,13 @@ try{
     grain:document.querySelector(".grain")!==null,
     overflows:document.documentElement.scrollWidth>window.innerWidth+1,
     portraitLoaded:document.querySelector(".v3-hero__portrait img").complete&&document.querySelector(".v3-hero__portrait img").naturalWidth>0,
-    watchLoaded:document.querySelector(".v3-project__watch-image").complete&&document.querySelector(".v3-project__watch-image").naturalWidth>0
+    watchLoaded:document.querySelector(".v3-project__watch-image").complete&&document.querySelector(".v3-project__watch-image").naturalWidth>0,
+    royalLoaded:document.querySelector(".v3-project--royal .v3-project__visual img").complete&&document.querySelector(".v3-project--royal .v3-project__visual img").naturalWidth>0,
+    formConnected:document.querySelector("#project-enquiry")?.action==="https://formspree.io/f/maqlanry",
+    formFields:["name","email","project_type","message","_subject","_gotcha"].every(n=>document.querySelector("#project-enquiry [name='"+n+"']")),
+    studioProfile:!!document.querySelector('a[href="https://www.instagram.com/codedvibrations/"]'),
+    upworkProfile:!!document.querySelector('a[href="https://www.upwork.com/freelancers/~017c87bd321f2e297f"]'),
+    eyebrow:rect(".v4-hero__eyebrow")
    };
   });
   if (type === "iphone") {
@@ -62,7 +68,8 @@ try{
     console.log("PORTFOLIO_V4_PREVIEW_"+type+"::"+preview.toString("base64"));
   }
   console.log(type,JSON.stringify({...results,errors}));
-  if(results.cards!==3 || results.arrows<8 || results.grain || results.overflows || !results.portraitLoaded || !results.watchLoaded || errors.length)failed=true;
+  if(results.cards!==3 || results.arrows<8 || results.grain || results.overflows || !results.portraitLoaded || !results.watchLoaded || !results.royalLoaded || !results.formConnected || !results.formFields || !results.studioProfile || !results.upworkProfile || errors.length)failed=true;
+  if(width<=700 && results.eyebrow.top < results.hero.top+results.picture.height*.70) failed=true;
   if(width<=700 && (Math.abs(results.picture.top-results.hero.top)>1 || results.picture.height<340 || results.picture.height>450 || results.title.top<results.hero.top+240 || results.title.bottom>results.hero.bottom-120))failed=true;
   if(width===390){
     await page.locator(".v3-menu").click();
@@ -86,6 +93,29 @@ try{
   await motionPage.evaluate(()=>window.scrollTo({top:document.querySelector("#selected-work").offsetTop+135,behavior:"instant"}));
   await motionPage.waitForTimeout(1550);
   const revealed=await firstCard.evaluate(e=>e.classList.contains("is-visible") && getComputedStyle(e.querySelector(".v3-project__meta")).opacity==="1");
+  // Process steps appear individually. The line responds to visibility.
+  await motionPage.evaluate(()=>document.querySelector("#approach").scrollIntoView({behavior:"instant"}));
+  await motionPage.waitForTimeout(1300);
+  const steps=await motionPage.evaluate(()=>
+    [...document.querySelectorAll(".v4-process-step")].map(e=>({
+      visible:e.classList.contains("is-visible"),
+      width:getComputedStyle(e,"::after").width,
+      label:e.querySelector("h3")?.textContent?.trim()
+    }))
+  );
+  console.log("PROCESS_MOTION",JSON.stringify(steps));
+  if(!steps.some(e=>e.visible))failed=true;
+  // Deterministic mock submission: no real email is sent.
+  await motionPage.route("https://formspree.io/f/maqlanry",route=>route.fulfill({
+    status:200,contentType:"application/json",body:JSON.stringify({ok:true})
+  }));
+  await motionPage.locator('[name="name"]').fill("Portfolio QA");
+  await motionPage.locator('[name="email"]').fill("qa@example.invalid");
+  await motionPage.locator('[name="project_type"]').selectOption({label:"Frontend development"});
+  await motionPage.locator('[name="message"]').fill("Testing a draft portfolio enquiry locally; this request is mocked and never sent.");
+  await motionPage.locator("#project-enquiry button[type=submit]").click();
+  await motionPage.locator(".v3-form__status").getByText("Thank you. Your message has been sent.").waitFor({timeout:4000});
+  console.log("FORMSPREE_QA","endpoint preserved, simulated success only, no live messages sent");
   const projectShot=await motionPage.screenshot({type:"jpeg",quality:46,fullPage:false});
   console.log("PORTFOLIO_V4_PREVIEW_projects::"+projectShot.toString("base64"));
   console.log("ANIMATION_CHECK",JSON.stringify({hiddenInitially,revealed,scrollY:await motionPage.evaluate(()=>window.scrollY)}));
