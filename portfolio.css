@@ -1380,3 +1380,30 @@ body{background:#080a0c;color:var(--ivory)}
 @media (max-width:700px) {
   .v4-hero__portrait img { object-position:56% 0%; }
 }
+
+
+/* HERO ALIGNMENT HOTFIX / 2026-10-11
+   - On desktop, eyebrow begins on the portrait's top edge.
+   - On mobile, signature stays IN the vertical flow, safely below the CTA.
+   Nothing else (portrait crop, text, links, overlays, layout) changes. */
+@media (min-width:1280px) and (min-height:800px) {
+  .v4-hero__content {
+    align-self:center;
+    height:clamp(475px,70vh,690px);
+    justify-content:flex-start;
+    padding-top:0;
+    padding-bottom:0;
+  }
+}
+@media (max-width:700px) {
+  .v4-hero__signature {
+    position:static;
+    inset:auto;
+    flex-shrink:0;
+    margin-top:clamp(16px,2.2vh,21px);
+    padding-top:12px;
+  }
+  .v4-hero__content {
+    padding-bottom:clamp(23px,3.8svh,36px);
+  }
+}
