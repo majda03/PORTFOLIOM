@@ -93,6 +93,11 @@ try{
   await motionPage.evaluate(()=>window.scrollTo({top:document.querySelector("#selected-work").offsetTop+135,behavior:"instant"}));
   await motionPage.waitForTimeout(1550);
   const revealed=await firstCard.evaluate(e=>e.classList.contains("is-visible") && getComputedStyle(e.querySelector(".v3-project__meta")).opacity==="1");
+  // Inspect the finished Royal card itself, not an unrelated scroll position.
+  await motionPage.locator(".v3-project--royal .v3-project__visual").scrollIntoViewIfNeeded();
+  await motionPage.waitForTimeout(1100);
+  const royalCardPreview=await motionPage.locator(".v3-project--royal .v3-project__visual").screenshot({type:"jpeg",quality:65});
+  console.log("ROYAL_CARD_VISUAL::"+royalCardPreview.toString("base64"));
   // Process steps appear individually. The line responds to visibility.
   await motionPage.evaluate(()=>document.querySelector("#approach").scrollIntoView({behavior:"instant"}));
   await motionPage.waitForTimeout(1300);
