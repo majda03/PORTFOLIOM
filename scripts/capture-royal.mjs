@@ -14,9 +14,8 @@ try {
   console.log("ROYAL_PAGE",JSON.stringify({name,title,firstText:text.slice(0,900),images}));
   const preview=await page.screenshot({type:"jpeg",quality:46});
   console.log("ROYAL_PREVIEW_"+name+"::"+preview.toString("base64"));
-  if(name==="desktop") {
-   await sharp(preview).resize({width:1280}).webp({quality:84,effort:5}).toFile("images/royal-storefront.webp");
-  }
+  // This screenshot is only for editorial review. Commit the authentic
+  // product image below, not another generic homepage screenshot.
   await page.close();
  }
 
