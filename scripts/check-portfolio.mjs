@@ -76,5 +76,20 @@ try{
   }
   await context.close();
  }
+  // Real motion opt-in: the projects must reveal during ordinary scrolling,
+  // without locking or replacing native scroll.
+  const motionContext=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1,reducedMotion:"no-preference"});
+  const motionPage=await motionContext.newPage();
+  await motionPage.goto("http://127.0.0.1:"+port+"/",{waitUntil:"load"});
+  const firstCard=motionPage.locator(".v3-feature-grid .v3-project").first();
+  const hiddenInitially=await firstCard.evaluate(e=>!e.classList.contains("is-visible"));
+  await motionPage.evaluate(()=>window.scrollTo({top:document.querySelector("#selected-work").offsetTop+135,behavior:"instant"}));
+  await motionPage.waitForTimeout(1550);
+  const revealed=await firstCard.evaluate(e=>e.classList.contains("is-visible") && getComputedStyle(e.querySelector(".v3-project__meta")).opacity==="1");
+  const projectShot=await motionPage.screenshot({type:"jpeg",quality:46,fullPage:false});
+  console.log("PORTFOLIO_V4_PREVIEW_projects::"+projectShot.toString("base64"));
+  console.log("ANIMATION_CHECK",JSON.stringify({hiddenInitially,revealed,scrollY:await motionPage.evaluate(()=>window.scrollY)}));
+  if(!hiddenInitially || !revealed) failed=true;
+  await motionContext.close();
 }finally{await browser.close();server.close()}
 if(failed)process.exitCode=1;else console.log("PASS: clear v4 headline, mobile portrait framing, three featured projects, nine archived, authentic watch, SVG arrows and no overflow");
