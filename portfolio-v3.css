@@ -595,3 +595,21 @@ body{background:#080a0b;color:#f2f2ee}
 @media(prefers-reduced-motion:reduce){
  .js .v3-project .v3-project__visual,.js .v3-project .v3-project__meta,.js .v3-approach__columns>div{opacity:1;transform:none;clip-path:none;transition:none}
 }
+
+/* Strict neutral palette: remove legacy pink/burgundy accents and panels. */
+.v3-hero,.v3-work,.v3-approach,.v3-contact,.v3-footer,.v3-archive,.v3-archive-hero{color:#f2f3f1}
+.v3-email,.v3-nav__contact,.v3-hero__eyebrow,.v3-form__status{color:#c5d0d2}
+.v3-approach__bio,.v3-approach__columns p,.v3-contact__copy p,.v3-project__meta p{color:#b5bec0}
+.v3-section-heading>p,.v3-archive-hero p{color:#b0bbbd}
+.v3-project__meta>a:hover{background:#273136}
+.v3-email{border-bottom-color:#829399}
+.v3-archive-hero h1 em{font-style:normal;color:#b9c7cb}
+.v3-all-work-link:hover{color:#d8e3e5}
+.v3-brand__dot,.v4-heading__dot{color:#d3dcde}
+.v3-form input,.v3-form select,.v3-form textarea{background:#151a1d;border-color:#3a474a}
+.v3-form input:focus,.v3-form select:focus,.v3-form textarea:focus{border-color:#c4d2d6}
+.v3-form input::placeholder,.v3-form textarea::placeholder{color:#9eaaae}
+.v3-project--royal .v3-project__visual{background:#252b2e}
+.v3-project__watermark{color:#f2f3f1}
+.v3-project__meta>div>span{color:#c1ced1}
+.v3-section-heading .v3-overline,.v3-approach .v3-overline,.v3-contact .v3-overline{color:#adbdc1}
