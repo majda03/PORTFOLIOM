@@ -107,7 +107,7 @@ try{
   if(!steps.some(e=>e.visible))failed=true;
   // Deterministic mock submission: no real email is sent.
   await motionPage.route("https://formspree.io/f/maqlanry",route=>route.fulfill({
-    status:200,contentType:"application/json",body:JSON.stringify({ok:true})
+    status:200,contentType:"application/json",headers:{"access-control-allow-origin":"*","access-control-allow-methods":"POST, OPTIONS"},body:JSON.stringify({ok:true})
   }));
   await motionPage.locator('[name="name"]').fill("Portfolio QA");
   await motionPage.locator('[name="email"]').fill("qa@example.invalid");
