@@ -47,9 +47,13 @@ try{
    };
   });
   await page.screenshot({path:"qa-screenshots/"+type+"-home.png",fullPage:true});
+  if (type === "iphone" || type === "desktop") {
+    const preview = await page.screenshot({type:"jpeg",quality:46,fullPage:false});
+    console.log("PORTFOLIO_V4_PREVIEW_"+type+"::"+preview.toString("base64"));
+  }
   console.log(type,JSON.stringify({...results,errors}));
   if(results.cards!==3 || results.arrows<8 || results.grain || results.overflows || !results.portraitLoaded || !results.watchLoaded || errors.length)failed=true;
-  if(width<=700 && (Math.abs(results.picture.top-results.hero.top)>1 || results.picture.height<220 || results.picture.height>340 || results.title.top<results.picture.bottom-12 || results.title.bottom>results.hero.bottom))failed=true;
+  if(width<=700 && (Math.abs(results.picture.top-results.hero.top)>1 || results.picture.height<340 || results.picture.height>450 || results.title.top<results.hero.top+240 || results.title.bottom>results.hero.bottom-120))failed=true;
   if(width===390){
     await page.locator(".v3-menu").click();
     if(await page.locator(".v3-nav.is-open").count()!==1)failed=true;
