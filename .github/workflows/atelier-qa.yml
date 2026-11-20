@@ -1,7 +1,7 @@
 name: Atelier portfolio checks
 on:
   push:
-    branches: [redesign/kinetic-atelier]
+    branches: [design/dimensional-studio]
   pull_request:
     branches: [main]
 permissions:
@@ -14,6 +14,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --check signature.js
+      - run: node --check studio.js
       - run: node scripts/check-atelier.mjs
       - run: node scripts/build-static.mjs

@@ -26,9 +26,21 @@ const home=await readFile(root+'index.html','utf8');
 assert.match(home,/action="https:\/\/formspree.io\/f\/maqlanry"/);
 for(const name of ['name','email','message','service','_gotcha'])assert.ok(home.includes(`name="${name}"`),`Missing enquiry field ${name}`);
 assert.match(home,/type="email"[^>]*required/);
-assert.match(await readFile(root+'signature.js','utf8'),/prefers-reduced-motion/);
-assert.ok(home.includes('work/afterlight.html')&&home.includes('work/oddly-human.html')&&home.includes('work/onyx-500.html'));
-assert.ok(!home.includes('atelier.css')&&!home.includes('atelier.js'));
-assert.ok(!(await readFile(root+'signature.css','utf8')).includes('feTurbulence'));
+assert.match(await readFile(root+'studio.js','utf8'),/prefers-reduced-motion/);
+const projects=JSON.parse(home.match(/<script type="application\/json" id="project-data">([\s\S]*?)<\/script>/)[1]);
+assert.equal(projects.length,6);
+for(const project of projects){
+ assert.ok(home.includes(`data-project="${project.slug}"`),`Missing project selector: ${project.slug}`);
+ assert.ok(pages.includes(`work/${project.slug}.html`),`Missing project story: ${project.slug}`);
+ assert.ok(new URL(project.url).protocol==='https:');
+ if(project.img)assert.ok(await stat(root+project.img.slice(1)),`Missing project image: ${project.slug}`);
+}
+assert.equal(projects.find(p=>p.slug==='onyx-500').url,'https://onyx-500-wireless-headphones.vercel.app/');
+assert.equal(projects.find(p=>p.slug==='onyx-500').img,null,'Do not substitute an invented ONYX image');
+for(let i=0;i<9;i++)assert.ok(await stat(`${root}assets/monogram/mk-${String(i).padStart(2,'0')}.webp`));
+assert.ok(!home.includes('atelier.css')&&!home.includes('atelier.js')&&!home.includes('signature.css'));
+assert.ok(home.includes('id="lab-preview"')&&home.includes('id="enquiry-dialog"'));
+assert.ok(home.includes('role="tablist"')); 
+assert.ok(!(await readFile(root+'studio.css','utf8')).includes('feTurbulence'));
 assert.ok(!home.includes('yourmail@example.com'));
 console.log(`Passed: ${pages.length} pages, ${localReferences} local references, unique headings/IDs, metadata, anchors and contact contract.`);

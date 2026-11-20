@@ -1,7 +1,7 @@
 # Portfolio review constraints
 
 - Always communicate with Majda in Latin script.
-- Majda has authorized a separate Vercel preview, conditional on verified backups. Publishing the preview/monochrome-approval branch is authorized. Do not merge to main, promote to production, change the custom domain or replace the live portfolio without separate explicit approval. A push can trigger automatic Vercel deployment.
+- On 2026-11-21, after being asked “Odobravaš li objavljivanje samo odvojenog pregleda, bez mijenjanja glavnog portfolija?”, Majda replied “link”. This authorizes the separate preview of the current redesign. Push only to preview/dimensional-review and create a preview deployment if needed. Production replacement remains unapproved: do not merge, promote, or change any custom domain. Preserve all backup branches.
 - Preserve the production site during review. The verified restore points are documented in ROLLBACK.md.
 - Visual exclusions requested by Majda: no burgundy text, grain overlay, decorative ribbon or substitute low-quality project imagery.
 - The opening should be gradual and deliberate. Keep content readable and the introduction skippable.

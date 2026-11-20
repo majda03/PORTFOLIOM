@@ -1,29 +1,31 @@
-# Majda Kapetanović — Monochrome review
+# Majda Kapetanović — Dimensional studio
 
-Separate preview approved by Majda on 2026-11-21, conditional on verified pre-edit backups. Production replacement is not approved. Restore points are recorded in ROLLBACK.md.
+Local review on `design/dimensional-studio`. This revision is not approved for publication. Do not push, deploy, merge or change the main domain. Verified recovery points are in ROLLBACK.md.
 
-## Direction
+## Design
 
-Pure black, white and neutral gray. A finite, skippable opening introduces the name before revealing a portrait-led composition. No decorative ribbon, canvas sculpture, grain overlay or burgundy typography.
+Graphite surfaces, cool blue accents and local Nimbus Sans typography. A finite, skippable opening introduces the identity. An original platinum MK sculpture responds to pointer movement or an accessible angle slider. Its nine physically rendered Blender views are blended on a Canvas 2D surface; this is a rendered-view interaction, not a live WebGL model. The still image remains available if decoding or Canvas is unavailable.
 
-The project gallery presents real independent projects, with large image stages and progressive native page transitions where supported. Afterlight uses Majda’s supplied genuine 3D capture rather than the earlier illustrated fallback. ONYX—500 links to the supplied live project; its current local preview is typographic because the review browser cannot create the WebGL context needed to capture the original scene. No substitute headphone image is presented as the project.
+The six-project browser uses small thumbnails and one compact detail panel. The interface playground changes the actual composition, palette and transition speed. The archive retains twelve projects. Six project pages explain intent and implementation. Contact uses the existing Formspree endpoint, validation, an accessible native dialog and an email fallback.
 
-## Source
+Afterlight uses Majda’s supplied real 3D capture. Aurelis uses the project’s own watch render. ONYX links to the supplied live experience; its preview is explicitly typographic because the review environment could not capture its original WebGL scene. No invented headphone image is presented as project output.
 
-- `signature.css`: active visual system
-- `signature.js`: opening, navigation, finite reveals, filters and existing Formspree enquiry
-- `index.html`: homepage
-- `all-work.html`: complete archive
-- `work/`: six project stories, including ONYX—500
+## Source and checks
 
-## Review checks
+- `studio.css`, `studio.js`: active visual system and interactions
+- `index.html`, `all-work.html`, `work/`: eight pages
+- `assets/monogram/`: nine original rendered views
+- `scripts/render-monogram.py`: portable Blender scene recreation
+- `assets/fonts/LICENSE.txt`: Nimbus Sans license
 
 ```sh
-node --check signature.js
+node --check studio.js
 node scripts/check-atelier.mjs
 node scripts/build-static.mjs
 ```
 
-Browser review uses the local static preview. No real enquiry is sent during testing. Hardware-specific performance and screen-reader testing are not independently measured.
+Source validation covers local references, project routes, metadata, duplicate IDs, anchors, project images, original ONYX URL, form fields and the nine rendered assets. It does not establish browser layout, touch behavior, accessibility conformance or performance.
 
-Reference study: Dennis Snellenberg’s portrait-led identity and clear work navigation; Bruno Simon’s integration of interaction with the author’s actual practice. The composition and source remain original to this portfolio.
+The final browser review of this revision is pending because the CUA browser tool became unavailable. No substitute browser process was launched. No real enquiry was sent. Test desktop and phone layouts, keyboard project selection, playground changes, dialog focus, reduced motion and provider responses before proposing publication.
+
+To recreate the monogram, run Blender 4.3 or compatible with `blender -b -t 8 --python scripts/render-monogram.py`. `MK_RENDER_OUTPUT` selects the PNG output directory. Convert each rendered PNG to 900×525 WebP with a 3px median filter, quality 91. The repository already contains the resulting assets; rendering is not required to run the site.
