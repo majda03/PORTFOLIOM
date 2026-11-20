@@ -1,69 +1,36 @@
-# Majda Kapetanović — Frontend Developer & Visual Designer
+# Majda Kapetanović — Digital experiences, with intention.
 
-Personal portfolio for **Majda Kapetanović**, focused on frontend engineering, responsive product interfaces, visual direction, and interactive web experiences.
+An independent frontend developer and visual designer's portfolio. The kinetic atelier redesign pairs a near-black and burgundy visual identity with editorial typography, an original interactive ribbon sculpture, and project stories.
 
-**Live portfolio:** https://majdakapetanovic.com
+Production domain: https://majdakapetanovic.com
 
-## What this portfolio demonstrates
+## Experience
 
-- Frontend engineering with JavaScript and TypeScript
-- React application architecture and reusable component systems
-- State management, persistence, filtering, cart and checkout flows
-- Responsive UI development across desktop and mobile
-- Accessibility-conscious interaction patterns
-- Motion, visual storytelling, and premium web presentation
-- SEO fundamentals including canonical metadata, Open Graph, structured data, sitemap, and robots configuration
-- Deployment and production delivery with GitHub and Vercel
+- Individually choreographed headline letters and progressive section reveals
+- Original parametric 3D ribbon rendered locally in Canvas 2D with studio-style reflections; no external model or WebGL dependency
+- Pointer-reactive sculpture, pause/play, system reduced-motion preference, offscreen and background-tab suspension
+- Selected projects: Afterlight, Aurelis, Oddly Human and Offing Line
+- Five project stories, including Royal Cosmetics, plus the previous six archive projects
+- Filterable project archive, native disclosure interactions, mobile navigation
+- Contact enquiry connected to the existing Formspree endpoint, with honest success/failure feedback and email fallback
+- Local licensed fonts, WebP project imagery, semantic HTML and per-route canonical metadata
 
-## Featured engineering work
+Projects are labelled as independent concepts. Royal Cosmetics uses simulated checkout. ONYX 500 is awaiting its verified live URL before inclusion.
 
-### Royal Cosmetics
-A React 19 + TypeScript commerce application with product discovery, search and filtering, cart and wishlist state, local persistence, stock-aware quantity logic, validated checkout, route-based views, and automated logic tests.
+## Local checks and preview
 
-Repository: https://github.com/majda03/Webshop-for-cosmetics-product
+No dependency installation is required.
 
-### BrandLab AI
-A JavaScript product that turns brand inputs into a generated visual direction including naming, palette, typography guidance, keywords, strategy notes, preview states, CSS variables, clipboard actions, and saved concepts.
+```sh
+node --check atelier.js
+node scripts/check-atelier.mjs
+node scripts/build-static.mjs
+```
 
-Repository: https://github.com/majda03/BrandLab-AI-App
+Serve `dist/` using a static HTTP server. The source can also be served directly at its root. Vercel uses the existing static project configuration.
 
-## Selected visual projects
+`atelier.css` and `atelier.js` are the active design and interaction layer. Older style/script files are retained for repository history and are not loaded by the redesigned pages. Historic visual tests target the previous design; `check-atelier.mjs` is the current structural check.
 
-- **Coded Vibrations** — creative studio website and premium-service positioning
-- **Noéra** — fashion editorial web experience
-- **Vesper Air** — private aviation concept
-- **Lumen Atelier** — interior and architectural web experience
+## Verification
 
-These projects demonstrate art direction, typography, responsive composition, interaction design, and frontend execution across different brand categories.
-
-## Portfolio stack
-
-- HTML5
-- CSS3
-- JavaScript
-- Responsive layouts
-- Accessible navigation and interaction patterns
-- Custom motion and interface behaviors
-- GitHub
-- Vercel
-
-## Production quality
-
-The portfolio includes:
-
-- Responsive image delivery with WebP sources
-- Lazy loading for non-critical media
-- Semantic page structure
-- Skip navigation and accessibility labels
-- Canonical URL and search metadata
-- Open Graph and social preview metadata
-- JSON-LD structured data
-- Sitemap and robots configuration
-- Custom contact flow through Formspree
-
-## About
-
-I build interfaces where product logic and visual direction support each other. My work ranges from premium marketing websites to stateful React applications, with an emphasis on clarity, detail, responsiveness, and a polished end-user experience.
-
-**Portfolio:** https://majdakapetanovic.com  
-**GitHub:** https://github.com/majda03
+The redesign is reviewed in a real browser at desktop width and inside responsive viewport frames. Navigation, filtering, disclosure controls, motion pause/play and empty-form validation are checked. A real contact enquiry is not sent during QA. Hardware-specific mobile performance and screen-reader testing have not been independently measured.
