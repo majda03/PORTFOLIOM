@@ -14,6 +14,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --check atelier.js
+      - run: node --check signature.js
       - run: node scripts/check-atelier.mjs
       - run: node scripts/build-static.mjs
